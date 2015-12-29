@@ -1,35 +1,4 @@
 function Jockey3ME() {}
-/*
-Jockey3ME.ledValue = 1;
-Jockey3ME.ledTimer = 0;
-
-Jockey3ME.ledShow = function () {
-  midi.sendShortMsg(0x90,Jockey3ME.ledValue,0x00);
-  if (Jockey3ME.ledValue > 1) {
-    midi.sendShortMsg(0x90,Jockey3ME.ledValue-1,0x00);
-  }
-
-  midi.sendShortMsg(0x90,Jockey3ME.ledValue,0x7F);
-  midi.sendShortMsg(0x91,Jockey3ME.ledValue,0x00);
-  if (Jockey3ME.ledValue > 1) {
-    midi.sendShortMsg(0x91,Jockey3ME.ledValue-1,0x00);
-  }
-
-  midi.sendShortMsg(0x91,Jockey3ME.ledValue,0x7F);
-
-  ++Jockey3ME.ledValue;
-
-  if (Jockey3ME.ledValue > 40) {
-    engine.stopTimer(Jockey3ME.ledTimer);
-    Jockey3ME.ledTimer = 0;
-    for (var i = 1; i < 160; i++) {
-      midi.sendShortMsg(0x90,i,0x00);
-      midi.sendShortMsg(0x91,i,0x00);
-    };
-  };
-}
-*/
-
 
 Jockey3ME.LedMeterTest = 0;
 Jockey3ME.LedMeterTestValue = 1;
@@ -37,24 +6,14 @@ Jockey3ME.LedMeterTestValue = 1;
 Jockey3ME.LedMeterTestShow = function () {
   midi.sendShortMsg(0x90,0x20,Jockey3ME.LedMeterTestValue);
   midi.sendShortMsg(0x90,0x1F,Jockey3ME.LedMeterTestValue);
-  midi.sendShortMsg(0x90,0x1E,Jockey3ME.LedMeterTestValue);/*
-  midi.sendShortMsg(0x90,0x1D,Jockey3ME.LedMeterTestValue);
-  midi.sendShortMsg(0x91,0x20,Jockey3ME.LedMeterTestValue);
-  midi.sendShortMsg(0x91,0x1F,Jockey3ME.LedMeterTestValue);
-  midi.sendShortMsg(0x91,0x1E,Jockey3ME.LedMeterTestValue);
-  midi.sendShortMsg(0x91,0x1D,Jockey3ME.LedMeterTestValue);*/
+  midi.sendShortMsg(0x90,0x1E,Jockey3ME.LedMeterTestValue);
   Jockey3ME.LedMeterTestValue += 2;
   if (Jockey3ME.LedMeterTestValue > 64) {
     engine.stopTimer(Jockey3ME.LedMeterTest);
     Jockey3ME.LedMeterTest = 0;
     midi.sendShortMsg(0x90,0x20,0x40);
     midi.sendShortMsg(0x90,0x1F,0x40);
-    midi.sendShortMsg(0x90,0x1E,0x40);/*
-    midi.sendShortMsg(0x90,0x1D,0x40);
-    midi.sendShortMsg(0x91,0x20,0x40);
-    midi.sendShortMsg(0x91,0x1F,0x40);
-    midi.sendShortMsg(0x91,0x1E,0x40);
-    midi.sendShortMsg(0x91,0x1D,0x40);*/
+    midi.sendShortMsg(0x90,0x1E,0x40);
 
   // Sets Effect Leds
     var getLedValue = 0;
@@ -100,7 +59,6 @@ Jockey3ME.LedShowBegin = function () {
 }
 
 Jockey3ME.init = function () {
-  //Jockey3ME.ledTimer = engine.beginTimer(70,"Jockey3ME.ledShow()");
   for (var i = 1; i < 120; i++) {
     midi.sendShortMsg(0x90,i,0x7F);
     midi.sendShortMsg(0x91,i,0x7F);
@@ -148,12 +106,9 @@ Jockey3ME.wheelTouch = function (channel, control, value, status) {
         var alpha = 1.0/8;
         var beta = alpha/32;
         engine.scratchEnable(currentDeck, 2048, 45+1/3, alpha, beta);
-        // Keep track of whether we're scratching on this virtual deck - for v1.10.x or below
-        // Jockey3ME.scratching[Jockey3ME.currentDeck] = true;
     }
     else {    // If button up
         engine.scratchDisable(currentDeck);
-        //Jockey3ME.scratching[Jockey3ME.currentDeck] = false;  // Only for v1.10.x and below
     }
 }
  
@@ -171,23 +126,6 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
       engine.setValue(group, "jog", newValue);
       return;
    }
-   // for 1.11.0 and above
-    
-   //if (!Jockey3ME.scratching[Jockey3ME.currentDeck]) return; // for 1.10.x and below
- 
-    // --- Choose only one of the following!
- 
-    // A: For a control that centers on 0:
-    // var newValue;
-    // if (value-64 > 0) newValue = value-128;
-    // else newValue = value;
- 
-    // B: For a control that centers on 0x40 (64):
-
- 
-    // --- End choice
- 
-    // In either case, register the movement
     engine.scratchTick(currentDeck,newValue);
 }
 
@@ -353,7 +291,6 @@ Jockey3ME.crossfaderScratch = false;
 
 Jockey3ME.crossfader = function (channel, control, value, status, group) {
   var newValue = 0;
-//  var crossfaderScratch = false;
   if (control == 0x37 && !Jockey3ME.crossfaderScratch) {
     newValue = (value / 63.5);
     newValue = (newValue - 1);

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset mixxxVersion="1.11.0" schemaVersion="1">
+<MixxxControllerPreset mixxxVersion="1.12.0" schemaVersion="1">
     <info>
         <name>Reloop Jockey 3 ME</name>
         <author>Chris2000SP</author>
-        <description>v0.9.3 Mapping for 1.11.x</description>
+        <description>v0.1.1 Mapping for 1.12.x</description>
     </info>
     <controller id="Reloop">
         <scriptfiles>
@@ -64,7 +64,7 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>beatsync</key>
+                <key>sync_enabled</key>
                 <status>0x90</status>
                 <midino>0x17</midino>
                 <options>
@@ -73,7 +73,7 @@
             </control>
             <control>
                 <group>[Channel2]</group>
-                <key>beatsync</key>
+                <key>sync_enabled</key>
                 <status>0x91</status>
                 <midino>0x17</midino>
                 <options>
@@ -144,8 +144,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>filterLow</key>
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter1</key>
                 <status>0xB0</status>
                 <midino>0x30</midino>
                 <options>
@@ -171,8 +171,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>filterMid</key>
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter2</key>
                 <status>0xB0</status>
                 <midino>0x2F</midino>
                 <options>
@@ -207,8 +207,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>filterHigh</key>
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter3</key>
                 <status>0xB0</status>
                 <midino>0x2E</midino>
                 <options>
@@ -225,8 +225,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>filterLow</key>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter1</key>
                 <status>0xB0</status>
                 <midino>0x6F</midino>
                 <options>
@@ -270,8 +270,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>filterMid</key>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter2</key>
                 <status>0xB0</status>
                 <midino>0x6E</midino>
                 <options>
@@ -306,8 +306,8 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>filterHigh</key>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter3</key>
                 <status>0xB0</status>
                 <midino>0x6D</midino>
                 <options>
@@ -529,7 +529,7 @@
                 <options>
                     <script-binding/>
                 </options>
-            </control>
+            </control><!-- 
             <control>
                 <group>[Channel1]</group>
                 <key>play</key>
@@ -538,7 +538,7 @@
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control> -->
             <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.wheelTurn</key>
@@ -601,7 +601,7 @@
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control><!-- 
             <control>
                 <group>[Channel1]</group>
                 <key>cue_default</key>
@@ -610,7 +610,7 @@
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control> -->
             <control>
                 <group>[Channel1]</group>
                 <key>LoadSelectedTrack</key>
@@ -709,16 +709,16 @@
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control><!-- 
             <control>
                 <group>[Channel1]</group>
-                <key>beatsync</key>
+                <key>sync_enabled</key>
                 <status>0x80</status>
                 <midino>0x17</midino>
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control> -->
             <control>
                 <group>[Flanger]</group>
                 <key>Jockey3ME.lfoDepth</key>
@@ -800,6 +800,24 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel1]]</group>
+                <key>super1</key>
+                <status>0xB0</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel2]]</group>
+                <key>super1</key>
+                <status>0xB1</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
         </controls>
         <outputs>
             <output>
@@ -811,7 +829,7 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>beatsync</key>
+                <key>sync_enabled</key>
                 <status>0x90</status>
                 <midino>0x17</midino>
                 <minimum>0.1</minimum>
@@ -853,14 +871,14 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>cue_default</key>
+                <key>cue_indicator</key>
                 <status>0x91</status>
                 <midino>0x19</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>play</key>
+                <key>play_indicator</key>
                 <status>0x90</status>
                 <midino>0x1A</midino>
                 <minimum>0.1</minimum>
@@ -881,7 +899,7 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>beatsync</key>
+                <key>sync_enabled</key>
                 <status>0x91</status>
                 <midino>0x17</midino>
                 <minimum>0.1</minimum>
@@ -930,7 +948,7 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>cue_default</key>
+                <key>cue_indicator</key>
                 <status>0x90</status>
                 <midino>0x19</midino>
                 <minimum>0.1</minimum>
@@ -951,7 +969,7 @@
             </output>
             <output>
                 <group>[Channel2]</group>
-                <key>play</key>
+                <key>play_indicator</key>
                 <status>0x91</status>
                 <midino>0x1A</midino>
                 <minimum>0.1</minimum>

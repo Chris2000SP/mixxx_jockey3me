@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<MixxxControllerPreset mixxxVersion="1.12.0" schemaVersion="1">
+<MixxxControllerPreset mixxxVersion="1.12.0+" schemaVersion="1">
     <info>
         <name>Reloop Jockey 3 ME</name>
         <author>Chris2000SP</author>
@@ -667,7 +667,7 @@
             </control> -->
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>Jockey3ME.FX_Param</key>
+                <key>Jockey3ME.effectParam</key>
                 <description>FX Param 3</description>
                 <status>0xB0</status>
                 <midino>0x20</midino>
@@ -740,7 +740,7 @@
             </control> -->
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>Jockey3ME.FX_Param</key>
+                <key>Jockey3ME.effectParam</key>
                 <description>FX Param 2</description>
                 <status>0xB0</status>
                 <midino>0x1F</midino>
@@ -804,7 +804,7 @@
             </control> -->
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>Jockey3ME.FX_Param</key>
+                <key>Jockey3ME.effectParam</key>
                 <description>FX Param 1</description>
                 <status>0xB0</status>
                 <midino>0x1E</midino>
@@ -814,7 +814,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>Jockey3ME.FX_Param</key>
+                <key>Jockey3ME.effectParam</key>
                 <description>FX Param Mix</description>
                 <status>0xB0</status>
                 <midino>0x1D</midino>

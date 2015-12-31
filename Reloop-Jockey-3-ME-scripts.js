@@ -1,7 +1,14 @@
 function Jockey3ME() {}
 
+// Variables
 Jockey3ME.LedMeterTest = 0;
 Jockey3ME.LedMeterTestValue = 1;
+Jockey3ME.LedMeterShowValue = 1;
+Jockey3ME.LedMeterShowValueTwo = false;
+Jockey3ME.VuMeter = 0;
+Jockey3ME.scratching = [];
+Jockey3ME.Timer_1 = 0;
+Jockey3ME.crossfaderScratch = false;
 
 Jockey3ME.LedMeterTestShow = function () {
   midi.sendShortMsg(0x90,0x20,Jockey3ME.LedMeterTestValue);
@@ -33,9 +40,6 @@ Jockey3ME.LedMeterTestShow = function () {
     midi.sendShortMsg(0x90,0x20,getLedValue);
   };
 }
-
-Jockey3ME.LedMeterShowValue = 1;
-Jockey3ME.LedMeterShowValueTwo = false;
 
 Jockey3ME.LedMeterShow = function() {
   midi.sendShortMsg(0x90,0x21,Jockey3ME.LedMeterShowValue);
@@ -70,8 +74,6 @@ Jockey3ME.init = function () {
   Jockey3ME.LedShowBeginTimer = engine.beginTimer(500,"Jockey3ME.LedShowBegin()",1);
 }
 
-Jockey3ME.VuMeter = 0;
-
 Jockey3ME.fVuMeter = function () {
   var VuVal1 = engine.getValue("[Channel1]","VuMeter");
   var VuVal2 = engine.getValue("[Channel2]","VuMeter");
@@ -91,8 +93,6 @@ Jockey3ME.shutdown = function () {
   engine.stopTimer(Jockey3ME.VuMeter);
   Jockey3ME.VuMeter = 0;
 }
-
-Jockey3ME.scratching = [];
 
 // The button that enables/disables scratching
 Jockey3ME.wheelTouch = function (channel, control, value, status) {
@@ -129,10 +129,8 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
     engine.scratchTick(currentDeck,newValue);
 }
 
-Jockey3ME.Timer_1 = 0;
-
 Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {
-  if (control == 0x0B) {
+  /*if (control == 0x0B) {
     Jockey3ME.hotc = 1;
   } else if (control == 0x0C) {
     Jockey3ME.hotc = 2;
@@ -148,6 +146,32 @@ Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {
     Jockey3ME.hotc = 7;
   } else if (control == 0x12) {
     Jockey3ME.hotc = 8;
+  }*/
+  switch (control) {
+    case 11:
+      Jockey3ME.hotc = 1;
+      break;
+    case 12:
+      Jockey3ME.hotc = 2;
+      break;
+    case 13:
+      Jockey3ME.hotc = 3;
+      break;
+    case 14:
+      Jockey3ME.hotc = 4;
+      break;
+    case 15:
+      Jockey3ME.hotc = 5;
+      break;
+    case 16:
+      Jockey3ME.hotc = 6;
+      break;
+    case 17:
+      Jockey3ME.hotc = 7;
+      break;
+    case 18:
+      Jockey3ME.hotc = 8;
+      break;
   }
   if (Jockey3ME.Timer_1 == 0 && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 0 && value == 0x7F) {
     engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",1);
@@ -181,7 +205,7 @@ Jockey3ME.hotcue_clear = function (channel, control, value, status, group) {
    };
 }
 
-Jockey3ME.lfoDelay = function (channel, control, value, status, group) {
+/*Jockey3ME.lfoDelay = function (channel, control, value, status, group) {
    var interval = 400;
    var min = 50;
    var max = 10000;
@@ -255,6 +279,88 @@ Jockey3ME.lfoPeriod = function (channel, control, value, status, group) {
    getLedValue = parseInt(getLedValue);
    midi.sendShortMsg(0x90,0x1E,getLedValue);
 }
+*/
+
+Jockey3ME.effectParam = function (channel, control, value, status, group) { //////////////
+  var currentDeck = parseInt(group.substring(23,24));
+  var EncoderKnopDryWet = 0;
+  var EncoderKnopFX = 0;
+  var newVal = 0;
+  var interval = 0.04;
+  var min = 0;
+  var max = 1;
+  switch (control) {
+    case 29:
+      EncoderKnopDryWet = 1;
+      break;
+    case 30:
+      EncoderKnopFX = 1;
+      break;
+    case 31:
+      EncoderKnopFX = 2;
+      break;
+    case 32:
+      EncoderKnopFX = 3;
+      break;
+  }
+  if (!EncoderKnopDryWet) {
+    if (value == 0x41) {
+      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
+      newVal = curVal + interval;
+      if (newVal > max) newVal = max;
+    } else {
+      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
+      newVal = curVal - interval;
+      if (newVal < min) newVal = min;
+    }
+  } else {
+    if (value == 0x41) {
+      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+      newVal = curVal + interval;
+      if (newVal > max) newVal = max;
+    } else {
+      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+      newVal = curVal - interval;
+      if (newVal < min) newVal = min;
+    }
+  }
+  print("Effect " + EncoderKnopFX + " Val " + curVal);
+  switch (Jockey3ME.ifEffectLoaded(value, currentDeck)) {
+    case 1:
+      if (EncoderKnopFX > 1) {
+        EncoderKnopFX = 0;
+      }
+      break;
+    case 2:
+      if (EncoderKnopFX > 2) {
+        EncoderKnopFX = 0;
+      };
+  }
+  if (EncoderKnopDryWet) {
+    engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix", newVal);
+  } else if (EncoderKnopFX) {
+    engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX, newVal);
+  };
+
+  // Leds
+  var getLedValue = 0;
+  if (status == 0xB0) {
+    status = 0x90;
+  } else {
+    status = 0x91;
+  }
+  if (EncoderKnopFX) {
+    getLedValue = script.absoluteLin(engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX), 0.0, 1.0);
+    getLedValue = getLedValue * 127;
+    getLedValue = parseInt(getLedValue);
+    midi.sendShortMsg(status,control,getLedValue);
+  } else if (EncoderKnopDryWet) {
+    getLedValue = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+    getLedValue = getLedValue * 127;
+    getLedValue = parseInt(getLedValue);
+    midi.sendShortMsg(status,control,getLedValue);
+  };
+}
 
 // Browser Knop to Browse the Playlist
 Jockey3ME.TraxEncoderTurn = function (channel, control, value, status, group) {
@@ -287,8 +393,6 @@ Jockey3ME.loop_double_halve = function (channel, control, value, status, group) 
   }
 }
 
-Jockey3ME.crossfaderScratch = false;
-
 Jockey3ME.crossfader = function (channel, control, value, status, group) {
   var newValue = 0;
   if (control == 0x37 && !Jockey3ME.crossfaderScratch) {
@@ -311,4 +415,11 @@ Jockey3ME.crossfader = function (channel, control, value, status, group) {
       Jockey3ME.crossfaderScratch = true;
     }
   }
+}
+
+Jockey3ME.ifEffectLoaded = function (value, index) {
+  if (value) {
+    var numParameters = engine.getValue("[EffectRack1_EffectUnit" + index + "_Effect1]", "num_parameters");
+  }
+  return numParameters;
 }

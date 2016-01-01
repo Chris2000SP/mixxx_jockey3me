@@ -53,8 +53,8 @@ Jockey3ME.LedMeterShow = function() {
   if (Jockey3ME.LedMeterShowValueTwo && Jockey3ME.LedMeterShowValue <= 0) {
     engine.stopTimer(Jockey3ME.LedMeterShowTimer);
     Jockey3ME.LedMeterShowTimer = 0;
-    Jockey3ME.VuMeter = engine.beginTimer(1,"Jockey3ME.fVuMeter()");
-    Jockey3ME.LedMeterTest = engine.beginTimer(10,"Jockey3ME.LedMeterTestShow()");
+    Jockey3ME.VuMeter = engine.beginTimer(20,"Jockey3ME.fVuMeter()");
+    // Jockey3ME.LedMeterTest = engine.beginTimer(20,"Jockey3ME.LedMeterTestShow()");
   };
 }
 
@@ -305,26 +305,27 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) { ////
   }
   if (!EncoderKnopDryWet) {
     if (value == 0x41) {
-      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
+      var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
       newVal = curVal + interval;
       if (newVal > max) newVal = max;
     } else {
-      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
+      var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
       newVal = curVal - interval;
       if (newVal < min) newVal = min;
     }
   } else {
     if (value == 0x41) {
-      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+      var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
       newVal = curVal + interval;
       if (newVal > max) newVal = max;
     } else {
-      var curVal = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+      var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
       newVal = curVal - interval;
       if (newVal < min) newVal = min;
     }
   }
-  print("Effect " + EncoderKnopFX + " Val " + curVal);
+  // print("Effect " + EncoderKnopFX + " Val " + curVal);
+  // print("getParameterForValue " + engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX));
   switch (Jockey3ME.ifEffectLoaded(value, currentDeck)) {
     case 1:
       if (EncoderKnopFX > 1) {
@@ -334,12 +335,13 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) { ////
     case 2:
       if (EncoderKnopFX > 2) {
         EncoderKnopFX = 0;
-      };
+      }
+      break;
   }
   if (EncoderKnopDryWet) {
-    engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix", newVal);
+    engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix", newVal);
   } else if (EncoderKnopFX) {
-    engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX, newVal);
+    engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX, newVal);
   };
 
   // Leds
@@ -350,12 +352,12 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) { ////
     status = 0x91;
   }
   if (EncoderKnopFX) {
-    getLedValue = script.absoluteLin(engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX), 0.0, 1.0);
+    getLedValue = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
     getLedValue = getLedValue * 127;
     getLedValue = parseInt(getLedValue);
     midi.sendShortMsg(status,control,getLedValue);
   } else if (EncoderKnopDryWet) {
-    getLedValue = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+    getLedValue = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
     getLedValue = getLedValue * 127;
     getLedValue = parseInt(getLedValue);
     midi.sendShortMsg(status,control,getLedValue);

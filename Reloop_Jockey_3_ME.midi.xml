@@ -3,7 +3,7 @@
     <info>
         <name>Reloop Jockey 3 ME</name>
         <author>Chris2000SP</author>
-        <description>v0.1.1 Mapping for 1.12.x</description>
+        <description>v0.5.0 Mapping for 1.12.x</description>
     </info>
     <controller id="Reloop">
         <scriptfiles>

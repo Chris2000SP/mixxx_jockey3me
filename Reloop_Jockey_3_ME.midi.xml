@@ -3,112 +3,13 @@
     <info>
         <name>Reloop Jockey 3 ME</name>
         <author>Chris2000SP</author>
-        <description>v0.5.0 Mapping for 1.12.x</description>
+        <description>v0.5.1 Mapping for 1.12.x</description>
     </info>
     <controller id="Reloop">
         <scriptfiles>
             <file functionprefix="Jockey3ME" filename="Reloop-Jockey-3-ME-scripts.js"/>
         </scriptfiles>
-        <controls><!--
-            <control>
-                <group>[Channel1]</group>
-                <key>rate_temp_up</key>
-                <status>0x80</status>
-                <midino>0x2A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> --><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>rate_temp_down</key>
-                <status>0x80</status>
-                <midino>0x29</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x12</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x11</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x10</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x0F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x0E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x0D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x80</status>
-                <midino>0x0C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control> --><!--
-            <control>
-                <group>[Channel1]</group>
-                <key>pfl</key>
-                <status>0x80</status>
-                <midino>0x1C</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>--><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>sync_enabled</key>
-                <status>0x80</status>
-                <midino>0x17</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> -->
+        <controls>
 
             <!-- Master Section -->
             <control>

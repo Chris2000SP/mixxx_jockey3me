@@ -235,6 +235,46 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Button Enable FX to Deck A</description>
+                <status>0x90</status>
+                <midino>0x40</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Button Enable FX to Deck B</description>
+                <status>0x90</status>
+                <midino>0x41</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Button Enable FX to Deck C</description>
+                <status>0x90</status>
+                <midino>0x42</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Button Enable FX to Deck D</description>
+                <status>0x90</status>
+                <midino>0x43</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Effect Chain 2 -->
             <control>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -291,6 +331,46 @@
                 <key>enabled</key>
                 <status>0x91</status>
                 <midino>0x01</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Button Enable FX to Deck A</description>
+                <status>0x91</status>
+                <midino>0x40</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Button Enable FX to Deck B</description>
+                <status>0x91</status>
+                <midino>0x41</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Button Enable FX to Deck C</description>
+                <status>0x91</status>
+                <midino>0x42</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Button Enable FX to Deck D</description>
+                <status>0x91</status>
+                <midino>0x43</midino>
                 <options>
                     <normal/>
                 </options>
@@ -355,6 +435,46 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Button Enable FX to Deck A</description>
+                <status>0x92</status>
+                <midino>0x40</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Button Enable FX to Deck B</description>
+                <status>0x92</status>
+                <midino>0x41</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Button Enable FX to Deck C</description>
+                <status>0x92</status>
+                <midino>0x42</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Button Enable FX to Deck D</description>
+                <status>0x92</status>
+                <midino>0x43</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Effect Chain 4 -->
             <control>
                 <group>[EffectRack1_EffectUnit4]</group>
@@ -411,6 +531,46 @@
                 <key>enabled</key>
                 <status>0x93</status>
                 <midino>0x01</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Button Enable FX to Deck A</description>
+                <status>0x93</status>
+                <midino>0x40</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Button Enable FX to Deck B</description>
+                <status>0x93</status>
+                <midino>0x41</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Button Enable FX to Deck C</description>
+                <status>0x93</status>
+                <midino>0x42</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Button Enable FX to Deck D</description>
+                <status>0x93</status>
+                <midino>0x43</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1691,6 +1851,166 @@
                 <status>0x93</status>
                 <midino>0x01</midino>
                 <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Led</description>
+                <status>0x90</status>
+                <midino>0x40</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Led</description>
+                <status>0x90</status>
+                <midino>0x41</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Led</description>
+                <status>0x90</status>
+                <midino>0x42</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Led</description>
+                <status>0x90</status>
+                <midino>0x43</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Led</description>
+                <status>0x91</status>
+                <midino>0x40</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Led</description>
+                <status>0x91</status>
+                <midino>0x41</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Led</description>
+                <status>0x91</status>
+                <midino>0x42</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Led</description>
+                <status>0x91</status>
+                <midino>0x43</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Led</description>
+                <status>0x92</status>
+                <midino>0x40</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Led</description>
+                <status>0x92</status>
+                <midino>0x41</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Led</description>
+                <status>0x92</status>
+                <midino>0x42</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Led</description>
+                <status>0x92</status>
+                <midino>0x43</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel1]_enable</key>
+                <description>Preset1 Led</description>
+                <status>0x93</status>
+                <midino>0x40</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel2]_enable</key>
+                <description>Preset2 Led</description>
+                <status>0x93</status>
+                <midino>0x41</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel3]_enable</key>
+                <description>Preset3 Led</description>
+                <status>0x93</status>
+                <midino>0x42</midino>
+                <minimum>
+                    0.1
+                </minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>group_[Channel4]_enable</key>
+                <description>Preset4 Led</description>
+                <status>0x93</status>
+                <midino>0x43</midino>
+                <minimum>
+                    0.1
+                </minimum>
             </output>
 
 

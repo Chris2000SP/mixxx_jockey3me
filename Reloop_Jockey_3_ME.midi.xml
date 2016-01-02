@@ -745,6 +745,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>beatloop_4_activate</key>
+                <description>Push Length to enable 4 Beatloop</description>
                 <status>0x90</status>
                 <midino>0x2B</midino>
                 <options>
@@ -754,6 +755,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.loop_double_halve</key>
+                <description>If Length Pushed, Turn to size the Loop</description>
                 <status>0xB0</status>
                 <midino>0x2B</midino>
                 <options>
@@ -763,6 +765,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>quantize</key>
+                <description>Beat Down Sets Quantize</description>
                 <status>0x90</status>
                 <midino>0x06</midino>
                 <options>
@@ -772,6 +775,7 @@
             <control>
                 <group>[Channel1]</group>
                 <key>beats_translate_curpos</key>
+                <description>Grid Down Moves Beatgrid line to PlayPos</description>
                 <status>0x90</status>
                 <midino>0x46</midino>
                 <options>
@@ -1056,6 +1060,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>beatloop_4_activate</key>
+                <description>Push Length to enable 4 Beatloop</description>
                 <status>0x91</status>
                 <midino>0x2B</midino>
                 <options>
@@ -1065,6 +1070,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>Jockey3ME.loop_double_halve</key>
+                <description>If Length Pushed, Turn to size the Loop</description>
                 <status>0xB1</status>
                 <midino>0x2B</midino>
                 <options>
@@ -1074,6 +1080,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>quantize</key>
+                <description>Beat Down Sets Quantize</description>
                 <status>0x91</status>
                 <midino>0x06</midino>
                 <options>
@@ -1083,6 +1090,7 @@
             <control>
                 <group>[Channel2]</group>
                 <key>beats_translate_curpos</key>
+                <description>Grid Down Moves Beatgrid line to PlayPos</description>
                 <status>0x91</status>
                 <midino>0x46</midino>
                 <options>
@@ -1367,6 +1375,7 @@
             <control>
                 <group>[Channel3]</group>
                 <key>beatloop_4_activate</key>
+                <description>Push Length to enable 4 Beatloop</description>
                 <status>0x92</status>
                 <midino>0x2B</midino>
                 <options>
@@ -1376,6 +1385,7 @@
             <control>
                 <group>[Channel3]</group>
                 <key>Jockey3ME.loop_double_halve</key>
+                <description>If Length Pushed, Turn to size the Loop</description>
                 <status>0xB2</status>
                 <midino>0x2B</midino>
                 <options>
@@ -1385,6 +1395,7 @@
             <control>
                 <group>[Channel3]</group>
                 <key>quantize</key>
+                <description>Beat Down Sets Quantize</description>
                 <status>0x92</status>
                 <midino>0x06</midino>
                 <options>
@@ -1394,6 +1405,7 @@
             <control>
                 <group>[Channel3]</group>
                 <key>beats_translate_curpos</key>
+                <description>Grid Down Moves Beatgrid line to PlayPos</description>
                 <status>0x92</status>
                 <midino>0x46</midino>
                 <options>
@@ -1678,6 +1690,7 @@
             <control>
                 <group>[Channel4]</group>
                 <key>beatloop_4_activate</key>
+                <description>Push Length to enable 4 Beatloop</description>
                 <status>0x93</status>
                 <midino>0x2B</midino>
                 <options>
@@ -1687,6 +1700,7 @@
             <control>
                 <group>[Channel4]</group>
                 <key>Jockey3ME.loop_double_halve</key>
+                <description>If Length Pushed, Turn to size the Loop</description>
                 <status>0xB3</status>
                 <midino>0x2B</midino>
                 <options>
@@ -1696,6 +1710,7 @@
             <control>
                 <group>[Channel4]</group>
                 <key>quantize</key>
+                <description>Beat Down Sets Quantize</description>
                 <status>0x93</status>
                 <midino>0x06</midino>
                 <options>
@@ -1705,6 +1720,7 @@
             <control>
                 <group>[Channel4]</group>
                 <key>beats_translate_curpos</key>
+                <description>Grid Down Moves Beatgrid line to PlayPos</description>
                 <status>0x93</status>
                 <midino>0x46</midino>
                 <options>

@@ -1,32 +1,50 @@
 function Jockey3ME() {}
 
 // Variables
-Jockey3ME.EffectLedMeter = 0;
-Jockey3ME.EffectLedMeterValue = 1;
+Jockey3ME.LedMeterTest = 0;
+Jockey3ME.LedMeterTestValue = 1;
 Jockey3ME.LedMeterShowValue = 1;
 Jockey3ME.LedMeterShowValueTwo = false;
 Jockey3ME.VuMeter = 0;
 Jockey3ME.scratching = [];
-Jockey3ME.hotcueClearVal = 0;
+Jockey3ME.Timer_1 = 0;
 Jockey3ME.crossfaderScratch = false;
 Jockey3ME.effectSelectTimer = 0;
 
 // Functions
-Jockey3ME.EffectLedMeterShow = function () {
-  midi.sendShortMsg(0x90,0x1D,Jockey3ME.EffectLedMeterValue);
-  midi.sendShortMsg(0x91,0x1D,Jockey3ME.EffectLedMeterValue);
-  Jockey3ME.EffectLedMeterValue += 2;
-  if (Jockey3ME.EffectLedMeterValue >= 127) {
-    engine.stopTimer(Jockey3ME.EffectLedMeter);
-    Jockey3ME.EffectLedMeter = 0;
+/*
+Jockey3ME.LedMeterTestShow = function () {
+  midi.sendShortMsg(0x90,0x20,Jockey3ME.LedMeterTestValue);
+  midi.sendShortMsg(0x90,0x1F,Jockey3ME.LedMeterTestValue);
+  midi.sendShortMsg(0x90,0x1E,Jockey3ME.LedMeterTestValue);
+  Jockey3ME.LedMeterTestValue += 2;
+  if (Jockey3ME.LedMeterTestValue > 64) {
+    engine.stopTimer(Jockey3ME.LedMeterTest);
+    Jockey3ME.LedMeterTest = 0;
+    midi.sendShortMsg(0x90,0x20,0x40);
+    midi.sendShortMsg(0x90,0x1F,0x40);
+    midi.sendShortMsg(0x90,0x1E,0x40);
 
-    // Sets Effect Leds
-    for (var i = 1, j = 176; i <= 4; i++) {
-      Jockey3ME.effectSelectLedSet(j,i);
-      j++;
-    }
+  // Sets Effect Leds
+    var getLedValue = 0;
+    getLedValue = engine.getValue("[Flanger]","lfoPeriod");
+    getLedValue = getLedValue / 15748.0315; // Set Value 0-127
+    getLedValue = parseInt(getLedValue);
+    midi.sendShortMsg(0x90,0x1E,getLedValue);
+
+    getLedValue = engine.getValue("[Flanger]","lfoDepth");
+    getLedValue = getLedValue * 127; // Set Value 0-127
+    getLedValue = parseInt(getLedValue);
+    midi.sendShortMsg(0x90,0x1F,getLedValue);
+
+    getLedValue = engine.getValue("[Flanger]","lfoDelay");
+    getLedValue = getLedValue / 78.74; // Set Value 0-127
+    getLedValue = parseInt(getLedValue);
+    midi.sendShortMsg(0x90,0x20,getLedValue);
   };
 }
+*/
+
 // Main LedShow Script
 Jockey3ME.LedMeterShow = function() {
   midi.sendShortMsg(0x90,0x21,Jockey3ME.LedMeterShowValue);
@@ -42,7 +60,7 @@ Jockey3ME.LedMeterShow = function() {
     engine.stopTimer(Jockey3ME.LedMeterShowTimer);
     Jockey3ME.LedMeterShowTimer = 0;
     Jockey3ME.VuMeter = engine.beginTimer(20,"Jockey3ME.fVuMeter()"); // Start Every 20ms the fVuMeter Function
-    Jockey3ME.EffectLedMeter = engine.beginTimer(20,"Jockey3ME.EffectLedMeterShow()");
+    // Jockey3ME.LedMeterTest = engine.beginTimer(20,"Jockey3ME.LedMeterTestShow()");
   };
 }
 
@@ -125,12 +143,19 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
 
 // Hotcues
 Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {
-  Jockey3ME.hotc = Jockey3ME.hotcue_buttonSelect(control);
-
-  if (!Jockey3ME.hotcueClearVal && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 0 && value == 0x7F) {
+  Jockey3ME.hotc_arr = [1,2,3,4,5,6,7,8];
+  Jockey3ME.hotc_arr_2 = [11,12,13,14,15,16,17,18];
+  for (var i = 0; i < Jockey3ME.hotc_arr.length; ++i) {
+    switch (control) {
+      case Jockey3ME.hotc_arr_2[i]:
+        Jockey3ME.hotc = Jockey3ME.hotc_arr[i];
+        break;
+    }
+  }
+  if (Jockey3ME.Timer_1 == 0 && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 0 && value == 0x7F) {
     engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",1);
     engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",0);
-  } else if (Jockey3ME.hotcueClearVal && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 1 && value == 0x7F) {
+  } else if (Jockey3ME.Timer_1 && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 1 && value == 0x7F) {
     engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_clear",1);
     engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_clear",0);
   } else if (value == 0x7F) {
@@ -139,36 +164,27 @@ Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {
   }
 }
 
-Jockey3ME.hotcue_buttonSelect = function (control) {
-  Jockey3ME.hotc_midino = [11,12,13,14,15,16,17,18];
-  for (var i = 0; i < Jockey3ME.hotc_midino.length; i++) {
-    switch (control) {
-      case Jockey3ME.hotc_midino[i]:
-        return Jockey3ME.hotc_midino[i] - 10;
-        break;
-    }
-  };
-}
-
-Jockey3ME.hotcueClearVal_off = function() {
-  if (Jockey3ME.hotcueClearVal) {
-    Jockey3ME.hotcueClearVal = 0;
+Jockey3ME.Timer_1_off = function() {
+  if (Jockey3ME.Timer_1 != 0) {
+    // engine.stopTimer(Jockey3ME.Timer_1);
+    Jockey3ME.Timer_1 = 0;
   };
 }
 
 Jockey3ME.hotcue_clear = function (channel, control, value, status, group) {
    if (control == 0x09 && value == 0x7F) {
-    Jockey3ME.hotcueClearVal_off();
-    Jockey3ME.hotcueClearVal = 1;
+    Jockey3ME.Timer_1_off();
+    // Jockey3ME.Timer_1 = engine.beginTimer(100,"");
+    Jockey3ME.Timer_1 = 1;
     midi.sendShortMsg(status,control,0x01);
    } else {
-    Jockey3ME.hotcueClearVal_off();
+    Jockey3ME.Timer_1_off();
     midi.sendShortMsg(status,control,0x00);
    };
 }
 
 // Effect Sections
-Jockey3ME.effectParam = function (channel, control, value, status, group) {
+Jockey3ME.effectParam = function (channel, control, value, status, group) { //////////////
   var currentDeck = parseInt(group.substring(23,24));
   var EncoderKnopDryWet = 0;
   var EncoderKnopFX = 0;
@@ -180,8 +196,14 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
     case 29:
       EncoderKnopDryWet = 1;
       break;
-    default:
-      EncoderKnopFX = control - 29;
+    case 30:
+      EncoderKnopFX = 1;
+      break;
+    case 31:
+      EncoderKnopFX = 2;
+      break;
+    case 32:
+      EncoderKnopFX = 3;
       break;
   }
   if (!EncoderKnopDryWet) {
@@ -205,12 +227,16 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
       if (newVal < min) newVal = min;
     }
   }
-  switch (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters")) {
+  switch (Jockey3ME.ifEffectLoaded(value, currentDeck)) {
     case 1:
-      if (EncoderKnopFX > 1) EncoderKnopFX = 0;
+      if (EncoderKnopFX > 1) {
+        EncoderKnopFX = 0;
+      }
       break;
     case 2:
-      if (EncoderKnopFX > 2) EncoderKnopFX = 0;
+      if (EncoderKnopFX > 2) {
+        EncoderKnopFX = 0;
+      }
       break;
   }
   if (EncoderKnopDryWet) {
@@ -250,19 +276,35 @@ Jockey3ME.effectSelect = function (channel, control, value, status, group) {
 
 Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
   status = Jockey3ME.effectUnitValueLed(status);
-  var num_parameters = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters");
-  if (num_parameters > 3) {num_parameters = 3;};
-  if (num_parameters) {
-    for (var i = 1, j = 30; i <= num_parameters; i++) {
-      Jockey3ME.effectParamLedSet(currentDeck, i, status, j);
-      j++;
-    };
-  }
+  for (var i = 1, j = 30; i <= 3; i++) {
+    Jockey3ME.effectParamLedSet(currentDeck, i, status, j);
+    j++;
+  };
   Jockey3ME.effectMixLedSet(currentDeck, status, 29);
 }
 
 Jockey3ME.effectUnitValueLed = function (status) {
-  return status - 32;
+  switch (status) {
+    case 176:
+      return 144;
+      break;
+    case 177:
+      return 145;
+      break;
+    case 178:
+      return 146;
+      break;
+    case 179:
+      return 147;
+      break;
+  }
+}
+
+Jockey3ME.ifEffectLoaded = function (value, index) {
+  if (value) {
+    var numParameters = engine.getValue("[EffectRack1_EffectUnit" + index + "_Effect1]", "num_parameters");
+  }
+  return numParameters;
 }
 
 // Browser Knop to Browse the Playlist
@@ -279,6 +321,9 @@ Jockey3ME.ShiftTraxEncoderTurn = function (channel, control, value, status, grou
    
    if (newValue == 1) engine.setValue(group,"SelectNextPlaylist",newValue);
    else engine.setValue(group,"SelectPrevPlaylist",1);
+   
+   // engine.setValue(group,"SelectTrackKnob",newValue);
+   
 }
 
 Jockey3ME.loop_double_halve = function (channel, control, value, status, group) {

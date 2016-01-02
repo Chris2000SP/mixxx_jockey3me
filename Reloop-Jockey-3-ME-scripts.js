@@ -142,39 +142,13 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
 }
 
 // Hotcues
-Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {/*
-  switch (control) {
-    case 11:
-      Jockey3ME.hotc = 1;
-      break;
-    case 12:
-      Jockey3ME.hotc = 2;
-      break;
-    case 13:
-      Jockey3ME.hotc = 3;
-      break;
-    case 14:
-      Jockey3ME.hotc = 4;
-      break;
-    case 15:
-      Jockey3ME.hotc = 5;
-      break;
-    case 16:
-      Jockey3ME.hotc = 6;
-      break;
-    case 17:
-      Jockey3ME.hotc = 7;
-      break;
-    case 18:
-      Jockey3ME.hotc = 8;
-      break;
-  }*/
+Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {
   Jockey3ME.hotc_arr = [1,2,3,4,5,6,7,8];
   Jockey3ME.hotc_arr_2 = [11,12,13,14,15,16,17,18];
   for (var i = 0; i < Jockey3ME.hotc_arr.length; ++i) {
     switch (control) {
       case Jockey3ME.hotc_arr_2[i]:
-        Jockey3ME.hotc = hotc_arr[i];
+        Jockey3ME.hotc = Jockey3ME.hotc_arr[i];
         break;
     }
   }

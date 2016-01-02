@@ -10,77 +10,7 @@
             <file functionprefix="Jockey3ME" filename="Reloop-Jockey-3-ME-scripts.js"/>
         </scriptfiles>
         <controls>
-            <control>
-                <group>[Master]</group>
-                <key>balance</key>
-                <status>0xB0</status>
-                <midino>0x33</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>keylock</key>
-                <status>0x90</status>
-                <midino>0x59</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>keylock</key>
-                <status>0x91</status>
-                <midino>0x59</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>rate</key>
-                <status>0xE0</status>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Playlist]</group>
-                <key>Jockey3ME.ShiftTraxEncoderTurn</key>
-                <status>0xB0</status>
-                <midino>0x74</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>rate</key>
-                <status>0xE1</status>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>sync_enabled</key>
-                <status>0x90</status>
-                <midino>0x17</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>sync_enabled</key>
-                <status>0x91</status>
-                <midino>0x17</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
+            <!-- <control>
                 <group>[Channel1]</group>
                 <key>rate_temp_up</key>
                 <status>0x80</status>
@@ -88,7 +18,7 @@
                 <options>
                     <normal/>
                 </options>
-            </control><!-- 
+            </control> --><!-- 
             <control>
                 <group>[Channel1]</group>
                 <key>flanger</key>
@@ -106,7 +36,7 @@
                 <options>
                     <normal/>
                 </options>
-            </control> -->
+            </control> --><!-- 
             <control>
                 <group>[Channel1]</group>
                 <key>rate_temp_down</key>
@@ -118,65 +48,11 @@
             </control>
             <control>
                 <group>[Channel1]</group>
-                <key>volume</key>
-                <status>0xB0</status>
-                <midino>0x31</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>beatloop_4_activate</key>
-                <status>0x90</status>
-                <midino>0x2B</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>beatloop_4_activate</key>
-                <status>0x91</status>
-                <midino>0x2B</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
-                <key>parameter1</key>
-                <status>0xB0</status>
-                <midino>0x30</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
                 <key>Jockey3ME.hotcue_activate</key>
                 <status>0x80</status>
                 <midino>0x12</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>rate_temp_up</key>
-                <status>0x90</status>
-                <midino>0x2A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
-                <key>parameter2</key>
-                <status>0xB0</status>
-                <midino>0x2F</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -189,73 +65,10 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>volume</key>
-                <status>0xB0</status>
-                <midino>0x70</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>rate_temp_down</key>
-                <status>0x90</status>
-                <midino>0x29</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
-                <key>parameter3</key>
-                <status>0xB0</status>
-                <midino>0x2E</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.hotcue_activate</key>
                 <status>0x80</status>
                 <midino>0x10</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
-                <key>parameter1</key>
-                <status>0xB0</status>
-                <midino>0x6F</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x12</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>pregain</key>
-                <status>0xB0</status>
-                <midino>0x2D</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x12</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -270,73 +83,10 @@
                 </options>
             </control>
             <control>
-                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
-                <key>parameter2</key>
-                <status>0xB0</status>
-                <midino>0x6E</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x11</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x11</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.hotcue_activate</key>
                 <status>0x80</status>
                 <midino>0x0E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
-                <key>parameter3</key>
-                <status>0xB0</status>
-                <midino>0x6D</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x10</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x10</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.loop_double_halve</key>
-                <status>0xB0</status>
-                <midino>0x2B</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -351,42 +101,6 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.loop_double_halve</key>
-                <status>0xB1</status>
-                <midino>0x2B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>pregain</key>
-                <status>0xB0</status>
-                <midino>0x6C</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x0F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x0F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.hotcue_activate</key>
                 <status>0x80</status>
@@ -394,115 +108,7 @@
                 <options>
                     <script-binding/>
                 </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x0E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x0E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x0D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x0D</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.wheelTouch</key>
-                <status>0x90</status>
-                <midino>0x22</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x0C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.wheelTouch</key>
-                <status>0x91</status>
-                <midino>0x22</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x0C</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x90</status>
-                <midino>0x0B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_activate</key>
-                <status>0x91</status>
-                <midino>0x0B</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.hotcue_clear</key>
-                <status>0x90</status>
-                <midino>0x09</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.hotcue_clear</key>
-                <status>0x91</status>
-                <midino>0x09</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
+            </control> --><!--
             <control>
                 <group>[Channel1]</group>
                 <key>pfl</key>
@@ -511,16 +117,18 @@
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control>--><!-- 
             <control>
                 <group>[Channel1]</group>
-                <key>LoadSelectedTrack</key>
+                <key>sync_enabled</key>
                 <status>0x80</status>
-                <midino>0x1B</midino>
+                <midino>0x17</midino>
                 <options>
                     <normal/>
                 </options>
-            </control>
+            </control> -->
+
+            <!-- Master Section -->
             <control>
                 <group>[Master]</group>
                 <key>Jockey3ME.crossfader</key>
@@ -528,60 +136,6 @@
                 <midino>0x38</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>play</key>
-                <status>0x80</status>
-                <midino>0x1A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> -->
-            <control>
-                <group>[Channel1]</group>
-                <key>Jockey3ME.wheelTurn</key>
-                <status>0xB0</status>
-                <midino>0x22</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>Jockey3ME.wheelTurn</key>
-                <status>0xB1</status>
-                <midino>0x22</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>pfl</key>
-                <status>0x90</status>
-                <midino>0x1C</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>quantize</key>
-                <status>0x90</status>
-                <midino>0x06</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>pfl</key>
-                <status>0x91</status>
-                <midino>0x1C</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -594,48 +148,21 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>quantize</key>
-                <status>0x91</status>
-                <midino>0x06</midino>
+                <group>[Playlist]</group>
+                <key>Jockey3ME.TraxEncoderTurn</key>
+                <status>0xB0</status>
+                <midino>0x35</midino>
                 <options>
-                    <normal/>
-                </options>
-            </control><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>cue_default</key>
-                <status>0x80</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> -->
-            <control>
-                <group>[Channel1]</group>
-                <key>LoadSelectedTrack</key>
-                <status>0x90</status>
-                <midino>0x1B</midino>
-                <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>reloop_exit</key>
-                <status>0x90</status>
-                <midino>0x05</midino>
+                <group>[Playlist]</group>
+                <key>Jockey3ME.ShiftTraxEncoderTurn</key>
+                <status>0xB0</status>
+                <midino>0x74</midino>
                 <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>LoadSelectedTrack</key>
-                <status>0x91</status>
-                <midino>0x1B</midino>
-                <options>
-                    <normal/>
+                    <script-binding/>
                 </options>
             </control>
             <control>
@@ -648,23 +175,25 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>reloop_exit</key>
-                <status>0x91</status>
-                <midino>0x05</midino>
+                <group>[Master]</group>
+                <key>balance</key>
+                <status>0xB0</status>
+                <midino>0x33</midino>
                 <options>
                     <normal/>
                 </options>
-            </control><!-- 
+            </control>
+            <!-- Effect Chain 1 -->
             <control>
-                <group>[Flanger]</group>
-                <key>Jockey3ME.lfoDelay</key>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>Jockey3ME.effectSelect</key>
+                <description>FX Selection</description>
                 <status>0xB0</status>
-                <midino>0x20</midino>
+                <midino>0x5C</midino>
                 <options>
                     <script-binding/>
                 </options>
-            </control> -->
+            </control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>Jockey3ME.effectParam</key>
@@ -676,69 +205,6 @@
                 </options>
             </control>
             <control>
-                <group>[Channel1]</group>
-                <key>beats_translate_curpos</key>
-                <status>0x90</status>
-                <midino>0x46</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>beats_translate_curpos</key>
-                <status>0x91</status>
-                <midino>0x46</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>play</key>
-                <status>0x90</status>
-                <midino>0x1A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Playlist]</group>
-                <key>Jockey3ME.TraxEncoderTurn</key>
-                <status>0xB0</status>
-                <midino>0x35</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>play</key>
-                <status>0x91</status>
-                <midino>0x1A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>sync_enabled</key>
-                <status>0x80</status>
-                <midino>0x17</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> --><!-- 
-            <control>
-                <group>[Flanger]</group>
-                <key>Jockey3ME.lfoDepth</key>
-                <status>0xB0</status>
-                <midino>0x1F</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control> -->
-            <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>Jockey3ME.effectParam</key>
                 <description>FX Param 2</description>
@@ -747,61 +213,7 @@
                 <options>
                     <script-binding/>
                 </options>
-            </control><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>flanger</key>
-                <status>0x80</status>
-                <midino>0x01</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> -->
-            <control>
-                <group>[Channel1]</group>
-                <key>loop_out</key>
-                <status>0x90</status>
-                <midino>0x45</midino>
-                <options>
-                    <normal/>
-                </options>
             </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>loop_out</key>
-                <status>0x91</status>
-                <midino>0x45</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>cue_default</key>
-                <status>0x90</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>cue_default</key>
-                <status>0x91</status>
-                <midino>0x19</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control><!-- 
-            <control>
-                <group>[Flanger]</group>
-                <key>Jockey3ME.lfoPeriod</key>
-                <status>0xB0</status>
-                <midino>0x1E</midino>
-                <options>
-                    <script-binding/>
-                </options>
-            </control> -->
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>Jockey3ME.effectParam</key>
@@ -822,6 +234,299 @@
                     <script-binding/>
                 </options>
             </control>
+            <!-- Effect Chain 2 -->
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>Jockey3ME.effectSelect</key>
+                <description>FX Selection</description>
+                <status>0xB1</status>
+                <midino>0x5C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 3</description>
+                <status>0xB1</status>
+                <midino>0x20</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 2</description>
+                <status>0xB1</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 1</description>
+                <status>0xB1</status>
+                <midino>0x1E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param Mix</description>
+                <status>0xB1</status>
+                <midino>0x1D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Effect Chain 3 -->
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>Jockey3ME.effectSelect</key>
+                <description>FX Selection</description>
+                <status>0xB2</status>
+                <midino>0x5C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 3</description>
+                <status>0xB2</status>
+                <midino>0x20</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 2</description>
+                <status>0xB2</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 1</description>
+                <status>0xB2</status>
+                <midino>0x1E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param Mix</description>
+                <status>0xB2</status>
+                <midino>0x1D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Effect Chain 4 -->
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>Jockey3ME.effectSelect</key>
+                <description>FX Selection</description>
+                <status>0xB3</status>
+                <midino>0x5C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 3</description>
+                <status>0xB3</status>
+                <midino>0x20</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 2</description>
+                <status>0xB3</status>
+                <midino>0x1F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param 1</description>
+                <status>0xB3</status>
+                <midino>0x1E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>Jockey3ME.effectParam</key>
+                <description>FX Param Mix</description>
+                <status>0xB3</status>
+                <midino>0x1D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+
+            <!-- [Channel1] Deck A -->
+            <!-- Transport Section -->
+            <control>
+                <group>[Channel1]</group>
+                <key>cue_default</key>
+                <status>0x90</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>play</key>
+                <status>0x90</status>
+                <midino>0x1A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>LoadSelectedTrack</key>
+                <status>0x90</status>
+                <midino>0x1B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>sync_enabled</key>
+                <status>0x90</status>
+                <midino>0x17</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>keylock</key>
+                <status>0x90</status>
+                <midino>0x59</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- Hotcue Section -->
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 1</description>
+                <status>0x90</status>
+                <midino>0x0B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 2</description>
+                <status>0x90</status>
+                <midino>0x0C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 3</description>
+                <status>0x90</status>
+                <midino>0x0D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 4</description>
+                <status>0x90</status>
+                <midino>0x0E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 5</description>
+                <status>0x90</status>
+                <midino>0x0F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 6</description>
+                <status>0x90</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 7</description>
+                <status>0x90</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 8</description>
+                <status>0x90</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.hotcue_clear</key>
+                <description>HotCue Delete</description>
+                <status>0x90</status>
+                <midino>0x09</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Loop Section -->
             <control>
                 <group>[Channel1]</group>
                 <key>loop_in</key>
@@ -832,10 +537,55 @@
                 </options>
             </control>
             <control>
-                <group>[Channel2]</group>
-                <key>loop_in</key>
-                <status>0x91</status>
-                <midino>0x44</midino>
+                <group>[Channel1]</group>
+                <key>loop_out</key>
+                <status>0x90</status>
+                <midino>0x45</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>reloop_exit</key>
+                <status>0x90</status>
+                <midino>0x05</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatloop_4_activate</key>
+                <status>0x90</status>
+                <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.loop_double_halve</key>
+                <status>0xB0</status>
+                <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>quantize</key>
+                <status>0x90</status>
+                <midino>0x06</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beats_translate_curpos</key>
+                <status>0x90</status>
+                <midino>0x46</midino>
                 <options>
                     <normal/>
                 </options>
@@ -849,6 +599,308 @@
                     <normal/>
                 </options>
             </control>
+            <!-- Pitch and Jog -->
+            <control>
+                <group>[Channel1]</group>
+                <key>rate</key>
+                <status>0xE0</status>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>rate_temp_up</key>
+                <status>0x90</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>rate_temp_down</key>
+                <status>0x90</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.wheelTurn</key>
+                <status>0xB0</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>Jockey3ME.wheelTouch</key>
+                <status>0x90</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Mixer Section -->
+            <control>
+                <group>[Channel1]</group>
+                <key>pregain</key>
+                <status>0xB0</status>
+                <midino>0x2D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control><!-- EQ Low -->
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter1</key>
+                <status>0xB0</status>
+                <midino>0x30</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control><!-- EQ Mid -->
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter2</key>
+                <status>0xB0</status>
+                <midino>0x2F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control><!-- EQ High -->
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter3</key>
+                <status>0xB0</status>
+                <midino>0x2E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>volume</key>
+                <status>0xB0</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>pfl</key>
+                <status>0x90</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- [Channel2] Deck B -->
+            <!-- Transport Section -->
+            <control>
+                <group>[Channel2]</group>
+                <key>cue_default</key>
+                <status>0x91</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>play</key>
+                <status>0x91</status>
+                <midino>0x1A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>LoadSelectedTrack</key>
+                <status>0x91</status>
+                <midino>0x1B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>sync_enabled</key>
+                <status>0x91</status>
+                <midino>0x17</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>keylock</key>
+                <status>0x91</status>
+                <midino>0x59</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- Hotcue Section -->
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 1</description>
+                <status>0x91</status>
+                <midino>0x0B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 2</description>
+                <status>0x91</status>
+                <midino>0x0C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 3</description>
+                <status>0x91</status>
+                <midino>0x0D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 4</description>
+                <status>0x91</status>
+                <midino>0x0E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 5</description>
+                <status>0x91</status>
+                <midino>0x0F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 6</description>
+                <status>0x91</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 7</description>
+                <status>0x91</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 8</description>
+                <status>0x91</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.hotcue_clear</key>
+                <description>HotCue Delete</description>
+                <status>0x91</status>
+                <midino>0x09</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Loop Section -->
+            <control>
+                <group>[Channel2]</group>
+                <key>loop_in</key>
+                <status>0x91</status>
+                <midino>0x44</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>loop_out</key>
+                <status>0x91</status>
+                <midino>0x45</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>reloop_exit</key>
+                <status>0x91</status>
+                <midino>0x05</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatloop_4_activate</key>
+                <status>0x91</status>
+                <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.loop_double_halve</key>
+                <status>0xB1</status>
+                <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>quantize</key>
+                <status>0x91</status>
+                <midino>0x06</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beats_translate_curpos</key>
+                <status>0x91</status>
+                <midino>0x46</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <control>
                 <group>[QuickEffectRack1_[Channel2]]</group>
                 <key>super1</key>
@@ -858,7 +910,731 @@
                     <normal/>
                 </options>
             </control>
+            <!-- Pitch and Jog -->
+            <control>
+                <group>[Channel2]</group>
+                <key>rate</key>
+                <status>0xE1</status>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>rate_temp_up</key>
+                <status>0x91</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>rate_temp_down</key>
+                <status>0x91</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.wheelTurn</key>
+                <status>0xB1</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.wheelTouch</key>
+                <status>0x91</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Mixer Section -->
+            <control>
+                <group>[Channel2]</group>
+                <key>pregain</key>
+                <status>0xB1</status>
+                <midino>0x6C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter1</key>
+                <status>0xB1</status>
+                <midino>0x6F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter2</key>
+                <status>0xB1</status>
+                <midino>0x6E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter3</key>
+                <status>0xB1</status>
+                <midino>0x6D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>volume</key>
+                <status>0xB1</status>
+                <midino>0x70</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>pfl</key>
+                <status>0x91</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- [Channel3] Deck C -->
+            <!-- Transport Section -->
+            <control>
+                <group>[Channel3]</group>
+                <key>cue_default</key>
+                <status>0x92</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>play</key>
+                <status>0x92</status>
+                <midino>0x1A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>LoadSelectedTrack</key>
+                <status>0x92</status>
+                <midino>0x1B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>sync_enabled</key>
+                <status>0x92</status>
+                <midino>0x17</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>keylock</key>
+                <status>0x92</status>
+                <midino>0x59</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- Hotcue Section -->
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 1</description>
+                <status>0x92</status>
+                <midino>0x0B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 2</description>
+                <status>0x92</status>
+                <midino>0x0C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 3</description>
+                <status>0x92</status>
+                <midino>0x0D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 4</description>
+                <status>0x92</status>
+                <midino>0x0E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 5</description>
+                <status>0x92</status>
+                <midino>0x0F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 6</description>
+                <status>0x92</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 7</description>
+                <status>0x92</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 8</description>
+                <status>0x92</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.hotcue_clear</key>
+                <description>HotCue Delete</description>
+                <status>0x92</status>
+                <midino>0x09</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Loop Section -->
+            <control>
+                <group>[Channel3]</group>
+                <key>loop_in</key>
+                <status>0x92</status>
+                <midino>0x44</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>loop_out</key>
+                <status>0x92</status>
+                <midino>0x45</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>reloop_exit</key>
+                <status>0x92</status>
+                <midino>0x05</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>beatloop_4_activate</key>
+                <status>0x92</status>
+                <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.loop_double_halve</key>
+                <status>0xB2</status>
+                <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>quantize</key>
+                <status>0x92</status>
+                <midino>0x06</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>beats_translate_curpos</key>
+                <status>0x92</status>
+                <midino>0x46</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel3]]</group>
+                <key>super1</key>
+                <status>0xB2</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- Pitch and Jog -->
+            <control>
+                <group>[Channel3]</group>
+                <key>rate</key>
+                <status>0xE2</status>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>rate_temp_up</key>
+                <status>0x92</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>rate_temp_down</key>
+                <status>0x92</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.wheelTurn</key>
+                <status>0xB2</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>Jockey3ME.wheelTouch</key>
+                <status>0x92</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Mixer Section -->
+            <control>
+                <group>[Channel3]</group>
+                <key>pregain</key>
+                <status>0xB2</status>
+                <midino>0x6C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel3]_Effect1]</group>
+                <key>parameter1</key>
+                <status>0xB2</status>
+                <midino>0x6F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel3]_Effect1]</group>
+                <key>parameter2</key>
+                <status>0xB2</status>
+                <midino>0x6E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel3]_Effect1]</group>
+                <key>parameter3</key>
+                <status>0xB2</status>
+                <midino>0x6D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>volume</key>
+                <status>0xB2</status>
+                <midino>0x70</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>pfl</key>
+                <status>0x92</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- [Channel4] Deck D -->
+            <!-- Transport Section -->
+            <control>
+                <group>[Channel4]</group>
+                <key>cue_default</key>
+                <status>0x93</status>
+                <midino>0x19</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>play</key>
+                <status>0x93</status>
+                <midino>0x1A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>LoadSelectedTrack</key>
+                <status>0x93</status>
+                <midino>0x1B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>sync_enabled</key>
+                <status>0x93</status>
+                <midino>0x17</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>keylock</key>
+                <status>0x93</status>
+                <midino>0x59</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- Hotcue Section -->
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 1</description>
+                <status>0x93</status>
+                <midino>0x0B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 2</description>
+                <status>0x93</status>
+                <midino>0x0C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 3</description>
+                <status>0x93</status>
+                <midino>0x0D</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 4</description>
+                <status>0x93</status>
+                <midino>0x0E</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 5</description>
+                <status>0x93</status>
+                <midino>0x0F</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 6</description>
+                <status>0x93</status>
+                <midino>0x10</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 7</description>
+                <status>0x93</status>
+                <midino>0x11</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_activate</key>
+                <description>HotCue 8</description>
+                <status>0x93</status>
+                <midino>0x12</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.hotcue_clear</key>
+                <description>HotCue Delete</description>
+                <status>0x93</status>
+                <midino>0x09</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Loop Section -->
+            <control>
+                <group>[Channel4]</group>
+                <key>loop_in</key>
+                <status>0x93</status>
+                <midino>0x44</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>loop_out</key>
+                <status>0x93</status>
+                <midino>0x45</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>reloop_exit</key>
+                <status>0x93</status>
+                <midino>0x05</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>beatloop_4_activate</key>
+                <status>0x93</status>
+                <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.loop_double_halve</key>
+                <status>0xB3</status>
+                <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>quantize</key>
+                <status>0x93</status>
+                <midino>0x06</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>beats_translate_curpos</key>
+                <status>0x93</status>
+                <midino>0x46</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[QuickEffectRack1_[Channel4]]</group>
+                <key>super1</key>
+                <status>0xB3</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <!-- Pitch and Jog -->
+            <control>
+                <group>[Channel4]</group>
+                <key>rate</key>
+                <status>0xE3</status>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>rate_temp_up</key>
+                <status>0x93</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>rate_temp_down</key>
+                <status>0x93</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.wheelTurn</key>
+                <status>0xB3</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.wheelTouch</key>
+                <status>0x93</status>
+                <midino>0x22</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <!-- Mixer Section -->
+            <control>
+                <group>[Channel4]</group>
+                <key>pregain</key>
+                <status>0xB3</status>
+                <midino>0x6C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel4]_Effect1]</group>
+                <key>parameter1</key>
+                <status>0xB3</status>
+                <midino>0x6F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel4]_Effect1]</group>
+                <key>parameter2</key>
+                <status>0xB3</status>
+                <midino>0x6E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel4]_Effect1]</group>
+                <key>parameter3</key>
+                <status>0xB3</status>
+                <midino>0x6D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>volume</key>
+                <status>0xB3</status>
+                <midino>0x70</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>pfl</key>
+                <status>0x93</status>
+                <midino>0x1C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
         </controls>
+
+        <!-- Leds --> 
         <outputs>
             <output>
                 <group>[Channel1]</group>

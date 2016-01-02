@@ -9,30 +9,12 @@
         <scriptfiles>
             <file functionprefix="Jockey3ME" filename="Reloop-Jockey-3-ME-scripts.js"/>
         </scriptfiles>
-        <controls>
-            <!-- <control>
+        <controls><!--
+            <control>
                 <group>[Channel1]</group>
                 <key>rate_temp_up</key>
                 <status>0x80</status>
                 <midino>0x2A</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> --><!-- 
-            <control>
-                <group>[Channel1]</group>
-                <key>flanger</key>
-                <status>0x90</status>
-                <midino>0x01</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control> --><!-- 
-            <control>
-                <group>[Channel2]</group>
-                <key>flanger</key>
-                <status>0x91</status>
-                <midino>0x01</midino>
                 <options>
                     <normal/>
                 </options>
@@ -234,6 +216,15 @@
                     <script-binding/>
                 </options>
             </control>
+            <control>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>enabled</key>
+                <status>0x90</status>
+                <midino>0x01</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Effect Chain 2 -->
             <control>
                 <group>[EffectRack1_EffectUnit2]</group>
@@ -283,6 +274,15 @@
                 <midino>0x1D</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>enabled</key>
+                <status>0x91</status>
+                <midino>0x01</midino>
+                <options>
+                    <normal/>
                 </options>
             </control>
             <!-- Effect Chain 3 -->
@@ -336,6 +336,15 @@
                     <script-binding/>
                 </options>
             </control>
+            <control>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>enabled</key>
+                <status>0x92</status>
+                <midino>0x01</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Effect Chain 4 -->
             <control>
                 <group>[EffectRack1_EffectUnit4]</group>
@@ -385,6 +394,15 @@
                 <midino>0x1D</midino>
                 <options>
                     <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>enabled</key>
+                <status>0x93</status>
+                <midino>0x01</midino>
+                <options>
+                    <normal/>
                 </options>
             </control>
 
@@ -1637,10 +1655,50 @@
         <!-- Leds --> 
         <outputs>
             <output>
-                <group>[Channel1]</group>
-                <key>hotcue_2_enabled</key>
+                <group>[EffectRack1_EffectUnit1]</group>
+                <key>enabled</key>
                 <status>0x90</status>
-                <midino>0x0C</midino>
+                <midino>0x01</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit2]</group>
+                <key>enabled</key>
+                <status>0x91</status>
+                <midino>0x01</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit3]</group>
+                <key>enabled</key>
+                <status>0x92</status>
+                <midino>0x01</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[EffectRack1_EffectUnit4]</group>
+                <key>enabled</key>
+                <status>0x93</status>
+                <midino>0x01</midino>
+                <minimum>0.1</minimum>
+            </output>
+
+
+            <!-- [Channel 1] Deck A -->
+            <!-- Transport Section -->
+
+            <output>
+                <group>[Channel1]</group>
+                <key>play_indicator</key>
+                <status>0x90</status>
+                <midino>0x1A</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>cue_indicator</key>
+                <status>0x90</status>
+                <midino>0x19</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
@@ -1651,219 +1709,24 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[Channel2]</group>
-                <key>hotcue_7_enabled</key>
-                <status>0x91</status>
-                <midino>0x11</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
                 <group>[Channel1]</group>
-                <key>loop_out</key>
-                <status>0x90</status>
-                <midino>0x45</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>loop_in</key>
-                <status>0x90</status>
-                <midino>0x44</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>pfl</key>
-                <status>0x91</status>
-                <midino>0x1C</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>hotcue_8_enabled</key>
-                <status>0x91</status>
-                <midino>0x12</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>cue_indicator</key>
-                <status>0x91</status>
-                <midino>0x19</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>play_indicator</key>
-                <status>0x90</status>
-                <midino>0x1A</midino>
-                <minimum>0.1</minimum>
-            </output><!-- 
-            <output>
-                <group>[Channel1]</group>
-                <key>flanger</key>
-                <status>0x90</status>
-                <midino>0x01</midino>
-                <minimum>0.1</minimum>
-            </output> -->
-            <output>
-                <group>[Channel2]</group>
-                <key>hotcue_5_enabled</key>
-                <status>0x91</status>
-                <midino>0x0F</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>sync_enabled</key>
-                <status>0x91</status>
-                <midino>0x17</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>quantize</key>
-                <status>0x90</status>
-                <midino>0x06</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>reloop_exit</key>
-                <status>0x90</status>
-                <midino>0x05</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>hotcue_6_enabled</key>
-                <status>0x91</status>
-                <midino>0x10</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>loop_out</key>
-                <status>0x91</status>
-                <midino>0x45</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>hotcue_7_enabled</key>
-                <status>0x90</status>
-                <midino>0x11</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>hotcue_8_enabled</key>
-                <status>0x90</status>
-                <midino>0x12</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>cue_indicator</key>
-                <status>0x90</status>
-                <midino>0x19</midino>
-                <minimum>0.1</minimum>
-            </output><!-- 
-            <output>
-                <group>[Channel2]</group>
-                <key>flanger</key>
-                <status>0x91</status>
-                <midino>0x01</midino>
-                <minimum>0.1</minimum>
-            </output> -->
-            <output>
-                <group>[Channel1]</group>
-                <key>beat_active</key>
-                <status>0x90</status>
-                <midino>0x1B</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>play_indicator</key>
-                <status>0x91</status>
-                <midino>0x1A</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
                 <key>keylock</key>
-                <status>0x91</status>
+                <status>0x90</status>
                 <midino>0x59</midino>
                 <minimum>0.1</minimum>
             </output>
+            <!-- HotCue Section -->
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_5_enabled</key>
-                <status>0x90</status>
-                <midino>0x0F</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>hotcue_3_enabled</key>
-                <status>0x91</status>
-                <midino>0x0D</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>quantize</key>
-                <status>0x91</status>
-                <midino>0x06</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel1]</group>
-                <key>hotcue_6_enabled</key>
-                <status>0x90</status>
-                <midino>0x10</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>reloop_exit</key>
-                <status>0x91</status>
-                <midino>0x05</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
-                <key>hotcue_4_enabled</key>
-                <status>0x91</status>
-                <midino>0x0E</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
                 <key>hotcue_1_enabled</key>
-                <status>0x91</status>
+                <status>0x90</status>
                 <midino>0x0B</midino>
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[Channel2]</group>
-                <key>beat_active</key>
-                <status>0x91</status>
-                <midino>0x1B</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
                 <group>[Channel1]</group>
-                <key>keylock</key>
-                <status>0x90</status>
-                <midino>0x59</midino>
-                <minimum>0.1</minimum>
-            </output>
-            <output>
-                <group>[Channel2]</group>
                 <key>hotcue_2_enabled</key>
-                <status>0x91</status>
+                <status>0x90</status>
                 <midino>0x0C</midino>
                 <minimum>0.1</minimum>
             </output>
@@ -1882,12 +1745,63 @@
                 <minimum>0.1</minimum>
             </output>
             <output>
-                <group>[Channel2]</group>
+                <group>[Channel1]</group>
+                <key>hotcue_5_enabled</key>
+                <status>0x90</status>
+                <midino>0x0F</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>hotcue_6_enabled</key>
+                <status>0x90</status>
+                <midino>0x10</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>hotcue_7_enabled</key>
+                <status>0x90</status>
+                <midino>0x11</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>hotcue_8_enabled</key>
+                <status>0x90</status>
+                <midino>0x12</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Loop Section -->
+            <output>
+                <group>[Channel1]</group>
                 <key>loop_in</key>
-                <status>0x91</status>
+                <status>0x90</status>
                 <midino>0x44</midino>
                 <minimum>0.1</minimum>
             </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>loop_out</key>
+                <status>0x90</status>
+                <midino>0x45</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>reloop_exit</key>
+                <status>0x90</status>
+                <midino>0x05</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel1]</group>
+                <key>quantize</key>
+                <status>0x90</status>
+                <midino>0x06</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Mixer Section -->
             <output>
                 <group>[Channel1]</group>
                 <key>pfl</key>
@@ -1897,9 +1811,411 @@
             </output>
             <output>
                 <group>[Channel1]</group>
-                <key>hotcue_1_enabled</key>
+                <key>beat_active</key>
                 <status>0x90</status>
+                <midino>0x1B</midino>
+                <minimum>0.1</minimum>
+            </output>
+
+
+            <!-- [Channel2] -->
+            <!-- Transport Section -->
+
+            <output>
+                <group>[Channel2]</group>
+                <key>play_indicator</key>
+                <status>0x91</status>
+                <midino>0x1A</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>cue_indicator</key>
+                <status>0x91</status>
+                <midino>0x19</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>sync_enabled</key>
+                <status>0x91</status>
+                <midino>0x17</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>keylock</key>
+                <status>0x91</status>
+                <midino>0x59</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- HotCues -->
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_1_enabled</key>
+                <status>0x91</status>
                 <midino>0x0B</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_2_enabled</key>
+                <status>0x91</status>
+                <midino>0x0C</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_3_enabled</key>
+                <status>0x91</status>
+                <midino>0x0D</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_4_enabled</key>
+                <status>0x91</status>
+                <midino>0x0E</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_5_enabled</key>
+                <status>0x91</status>
+                <midino>0x0F</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_6_enabled</key>
+                <status>0x91</status>
+                <midino>0x10</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_7_enabled</key>
+                <status>0x91</status>
+                <midino>0x11</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>hotcue_8_enabled</key>
+                <status>0x91</status>
+                <midino>0x12</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Loop Section -->
+            <output>
+                <group>[Channel2]</group>
+                <key>loop_in</key>
+                <status>0x91</status>
+                <midino>0x44</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>loop_out</key>
+                <status>0x91</status>
+                <midino>0x45</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>reloop_exit</key>
+                <status>0x91</status>
+                <midino>0x05</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>quantize</key>
+                <status>0x91</status>
+                <midino>0x06</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Mixer Section -->
+            <output>
+                <group>[Channel2]</group>
+                <key>pfl</key>
+                <status>0x91</status>
+                <midino>0x1C</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel2]</group>
+                <key>beat_active</key>
+                <status>0x91</status>
+                <midino>0x1B</midino>
+                <minimum>0.1</minimum>
+            </output>
+
+
+            <!-- [Channel 3] Deck C -->
+            <!-- Transport Section -->
+
+            <output>
+                <group>[Channel3]</group>
+                <key>play_indicator</key>
+                <status>0x92</status>
+                <midino>0x1A</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>cue_indicator</key>
+                <status>0x92</status>
+                <midino>0x19</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>sync_enabled</key>
+                <status>0x92</status>
+                <midino>0x17</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>keylock</key>
+                <status>0x92</status>
+                <midino>0x59</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- HotCue Section -->
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_1_enabled</key>
+                <status>0x92</status>
+                <midino>0x0B</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_2_enabled</key>
+                <status>0x92</status>
+                <midino>0x0C</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_3_enabled</key>
+                <status>0x92</status>
+                <midino>0x0D</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_4_enabled</key>
+                <status>0x92</status>
+                <midino>0x0E</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_5_enabled</key>
+                <status>0x92</status>
+                <midino>0x0F</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_6_enabled</key>
+                <status>0x92</status>
+                <midino>0x10</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_7_enabled</key>
+                <status>0x92</status>
+                <midino>0x11</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>hotcue_8_enabled</key>
+                <status>0x92</status>
+                <midino>0x12</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Loop Section -->
+            <output>
+                <group>[Channel3]</group>
+                <key>loop_in</key>
+                <status>0x92</status>
+                <midino>0x44</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>loop_out</key>
+                <status>0x92</status>
+                <midino>0x45</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>reloop_exit</key>
+                <status>0x92</status>
+                <midino>0x05</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>quantize</key>
+                <status>0x92</status>
+                <midino>0x06</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Mixer Section -->
+            <output>
+                <group>[Channel3]</group>
+                <key>pfl</key>
+                <status>0x92</status>
+                <midino>0x1C</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel3]</group>
+                <key>beat_active</key>
+                <status>0x92</status>
+                <midino>0x1B</midino>
+                <minimum>0.1</minimum>
+            </output>
+
+
+            <!-- [Channel 4] Deck D -->
+            <!-- Transport Section -->
+
+            <output>
+                <group>[Channel4]</group>
+                <key>play_indicator</key>
+                <status>0x93</status>
+                <midino>0x1A</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>cue_indicator</key>
+                <status>0x93</status>
+                <midino>0x19</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>sync_enabled</key>
+                <status>0x93</status>
+                <midino>0x17</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>keylock</key>
+                <status>0x93</status>
+                <midino>0x59</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- HotCue Section -->
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_1_enabled</key>
+                <status>0x93</status>
+                <midino>0x0B</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_2_enabled</key>
+                <status>0x93</status>
+                <midino>0x0C</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_3_enabled</key>
+                <status>0x93</status>
+                <midino>0x0D</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_4_enabled</key>
+                <status>0x93</status>
+                <midino>0x0E</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_5_enabled</key>
+                <status>0x93</status>
+                <midino>0x0F</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_6_enabled</key>
+                <status>0x93</status>
+                <midino>0x10</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_7_enabled</key>
+                <status>0x93</status>
+                <midino>0x11</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>hotcue_8_enabled</key>
+                <status>0x93</status>
+                <midino>0x12</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Loop Section -->
+            <output>
+                <group>[Channel4]</group>
+                <key>loop_in</key>
+                <status>0x93</status>
+                <midino>0x44</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>loop_out</key>
+                <status>0x93</status>
+                <midino>0x45</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>reloop_exit</key>
+                <status>0x93</status>
+                <midino>0x05</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>quantize</key>
+                <status>0x93</status>
+                <midino>0x06</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <!-- Mixer Section -->
+            <output>
+                <group>[Channel4]</group>
+                <key>pfl</key>
+                <status>0x93</status>
+                <midino>0x1C</midino>
+                <minimum>0.1</minimum>
+            </output>
+            <output>
+                <group>[Channel4]</group>
+                <key>beat_active</key>
+                <status>0x93</status>
+                <midino>0x1B</midino>
                 <minimum>0.1</minimum>
             </output>
         </outputs>

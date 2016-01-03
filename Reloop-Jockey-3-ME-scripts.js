@@ -10,6 +10,7 @@ Jockey3ME.scratching = [];
 Jockey3ME.hotcueClearVal = 0;
 Jockey3ME.crossfaderScratch = false;
 Jockey3ME.effectSelectTimer = 0;
+Jockey3ME.num_effectsValue = [0,0,0,0];
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -110,7 +111,7 @@ Jockey3ME.wheelTouch = function (channel, control, value, status, group) {
         engine.scratchDisable(currentDeck);
     }
 }
- 
+
 // The wheel that actually controls the scratching
 Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
     var newValue=(value-64);
@@ -240,12 +241,25 @@ Jockey3ME.effectMixLedSet = function (currentDeck, status, control) {
   midi.sendShortMsg(status,control,ledValue);
 }
 
+Jockey3ME.effectSelectLedSetNumEffect = function (currentDeck, status, control, value) {
+  // var ledValue = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "num_effects");
+  if ((Jockey3ME.num_effectsValue[currentDeck - 1] + value) > 5) {
+    Jockey3ME.num_effectsValue[currentDeck - 1] = 1;
+  } else {
+    Jockey3ME.num_effectsValue[currentDeck - 1] += value;
+  }
+  var newLedValue = parseInt((Jockey3ME.num_effectsValue[currentDeck - 1] / 5) * 127); // ledValue returns how many effects it has not what is available. Set to 5
+  midi.sendShortMsg(Jockey3ME.effectUnitValueLed(status),control,newLedValue);
+  print("newLedValue " + newLedValue + " num_effectsValue[deck-1] " + Jockey3ME.num_effectsValue[currentDeck-1]);
+}
+
 Jockey3ME.effectSelect = function (channel, control, value, status, group) {
   var currentDeck = parseInt(group.substring(23,24));
   engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "]", "chain_selector", (value-64));
-  
+
   // Set Leds
   Jockey3ME.effectSelectTimer = engine.beginTimer(100, "Jockey3ME.effectSelectLedSet(" + status + "," + currentDeck + ")",1);
+  Jockey3ME.effectSelectLedSetNumEffect(currentDeck,status,92,(value-64));
 }
 
 Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
@@ -259,6 +273,7 @@ Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
     };
   }
   Jockey3ME.effectMixLedSet(currentDeck, status, 29);
+  // Jockey3ME.effectSelectLedSetNumEffect(currentDeck,status,92);
 }
 
 Jockey3ME.effectUnitValueLed = function (status) {
@@ -268,15 +283,15 @@ Jockey3ME.effectUnitValueLed = function (status) {
 // Browser Knop to Browse the Playlist
 Jockey3ME.TraxEncoderTurn = function (channel, control, value, status, group) {
     var newValue = (value-64);
-   
+
    engine.setValue(group,"SelectTrackKnob",newValue);
-   
+
 }
 
 // Browser Knop with Shift to Browse the Playlist Tree
 Jockey3ME.ShiftTraxEncoderTurn = function (channel, control, value, status, group) {
     var newValue = (value-64);
-   
+
    if (newValue == 1) engine.setValue(group,"SelectNextPlaylist",newValue);
    else engine.setValue(group,"SelectPrevPlaylist",1);
 }

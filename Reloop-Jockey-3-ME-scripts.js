@@ -12,6 +12,7 @@ Jockey3ME.crossfaderScratch = false;
 Jockey3ME.effectSelectTimer = 0;
 Jockey3ME.num_effectsValue = [0,0,0,0];
 Jockey3ME.effectsAvailable = 5; // Sets how many Effects are Loadable
+Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Turned
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -307,6 +308,11 @@ Jockey3ME.loop_double_halve = function (channel, control, value, status, group) 
     engine.setValue(group,"loop_halve",1);
     engine.setValue(group,"loop_halve",0);
   }
+}
+
+Jockey3ME.move_beat = function (channel, control, value, status, group) {
+  var newValue = (value-64);
+  engine.setValue(group,"beatjump",(newValue*Jockey3ME.move_beat_value));
 }
 
 Jockey3ME.crossfader = function (channel, control, value, status, group) {

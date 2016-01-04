@@ -1331,6 +1331,16 @@
             </control>
             <control>
                 <group>[Channel3]</group>
+                <key>Jockey3ME.move_beat</key>
+                <description>todo</description>
+                <status>0xB2</status>
+                <midino>0x2C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
                 <key>quantize</key>
                 <description>Beat Down Sets Quantize</description>
                 <status>0x92</status>
@@ -1811,7 +1821,7 @@
             </control>
         </controls>
 
-        <!-- Leds --> 
+        <!-- Leds -->
         <outputs>
             <output>
                 <group>[EffectRack1_EffectUnit1]</group>

@@ -11,6 +11,7 @@ Jockey3ME.hotcueClearVal = 0;
 Jockey3ME.crossfaderScratch = false;
 Jockey3ME.effectSelectTimer = 0;
 Jockey3ME.num_effectsValue = [0,0,0,0];
+Jockey3ME.effectsAvailable = 5; // Sets how many Effects are Loadable
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -243,14 +244,14 @@ Jockey3ME.effectMixLedSet = function (currentDeck, status, control) {
 
 Jockey3ME.effectSelectLedSetNumEffect = function (currentDeck, status, control, value) {
   // var ledValue = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "]", "num_effects");
-  if ((Jockey3ME.num_effectsValue[currentDeck - 1] + value) > 5) {
+  var ledValue = Jockey3ME.effectsAvailable; // num_effects returns how many effects in Unit is, not what is available. Set to 5
+  if ((Jockey3ME.num_effectsValue[currentDeck - 1] + value) > ledValue) {
     Jockey3ME.num_effectsValue[currentDeck - 1] = 1;
   } else {
     Jockey3ME.num_effectsValue[currentDeck - 1] += value;
   }
-  var newLedValue = parseInt((Jockey3ME.num_effectsValue[currentDeck - 1] / 5) * 127); // ledValue returns how many effects it has not what is available. Set to 5
+  var newLedValue = parseInt((Jockey3ME.num_effectsValue[currentDeck - 1] / ledValue) * 127);
   midi.sendShortMsg(Jockey3ME.effectUnitValueLed(status),control,newLedValue);
-  print("newLedValue " + newLedValue + " num_effectsValue[deck-1] " + Jockey3ME.num_effectsValue[currentDeck-1]);
 }
 
 Jockey3ME.effectSelect = function (channel, control, value, status, group) {

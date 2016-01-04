@@ -665,6 +665,16 @@
             </control>
             <control>
                 <group>[Channel1]</group>
+                <key>Jockey3ME.move_beat</key>
+                <description>todo</description>
+                <status>0xB0</status>
+                <midino>0x2C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
                 <key>quantize</key>
                 <description>Beat Down Sets Quantize</description>
                 <status>0x90</status>
@@ -992,6 +1002,16 @@
                 <description>If Length Pushed, Turn to size the Loop</description>
                 <status>0xB1</status>
                 <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>Jockey3ME.move_beat</key>
+                <description>todo</description>
+                <status>0xB1</status>
+                <midino>0x2C</midino>
                 <options>
                     <script-binding/>
                 </options>
@@ -1668,6 +1688,16 @@
                 <description>If Length Pushed, Turn to size the Loop</description>
                 <status>0xB3</status>
                 <midino>0x2B</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>Jockey3ME.move_beat</key>
+                <description>todo</description>
+                <status>0xB3</status>
+                <midino>0x2C</midino>
                 <options>
                     <script-binding/>
                 </options>

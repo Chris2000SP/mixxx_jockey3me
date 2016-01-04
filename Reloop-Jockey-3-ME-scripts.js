@@ -13,6 +13,7 @@ Jockey3ME.effectSelectTimer = 0;
 Jockey3ME.num_effectsValue = [0,0,0,0];
 Jockey3ME.effectsAvailable = 5; // Sets how many Effects are Loadable
 Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Turned
+Jockey3ME.CUP_value = 0;
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -334,6 +335,29 @@ Jockey3ME.crossfader = function (channel, control, value, status, group) {
       Jockey3ME.crossfaderScratch = false;
     } else {
       Jockey3ME.crossfaderScratch = true;
+    }
+  }
+}
+
+Jockey3ME.CUP = function (channel, control, value, status, group) {
+  if (engine.getValue(group,"play") == 1 && value == 0x7F) {
+    engine.setValue(group,"cue_default",1);
+    engine.setValue(group,"cue_default",0);
+    engine.setValue(group,"play",0);
+    midi.sendShortMsg(status,control,127);
+    Jockey3ME.CUP_value = 1;
+  } else if (Jockey3ME.CUP_value == 1 && value == 0) {
+    engine.setValue(group,"play",1);
+    midi.sendShortMsg(status,control,0);
+    Jockey3ME.CUP_value = 0;
+  } else {
+    if (value == 0x7F) {
+      engine.setValue(group,"cue_default",1);
+      engine.setValue(group,"cue_default",0);
+      midi.sendShortMsg(status,control,127);
+    } else {
+      engine.setValue(group,"play",1);
+      midi.sendShortMsg(status,control,0);
     }
   }
 }

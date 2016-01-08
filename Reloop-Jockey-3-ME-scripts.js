@@ -322,12 +322,27 @@ Jockey3ME.crossfader = function (channel, control, value, status, group) {
     newValue = ((value / 63.5) - 1);
     engine.setValue(group,"crossfader",newValue);
   } else if (control == 0x37 && Jockey3ME.crossfaderScratch) {
-    if (value == 127) {
-      engine.setValue(group,"crossfader",1);
-    } else if (value == 0) {
-      engine.setValue(group,"crossfader",-1);
-    } else {
-      engine.setValue(group,"crossfader",0);
+    switch (value) {
+      case 127:
+        engine.setValue(group,"crossfader",1);
+        break;
+      case 126:
+        engine.setValue(group,"crossfader",0.96875);
+        break;
+      case 125:
+        engine.setValue(group,"crossfader",0.953125);
+        break;
+      case 2:
+        engine.setValue(group,"crossfader",-0.953125);
+        break;
+      case 1:
+        engine.setValue(group,"crossfader",-0.96875);
+        break;
+      case 0;
+        engine.setValue(group,"crossfader",-1);
+        break;
+      default:
+        engine.setValue(group,"crossfader",0);
     }
   } else {
     if (value <= 126) {

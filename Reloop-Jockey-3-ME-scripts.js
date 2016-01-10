@@ -338,7 +338,7 @@ Jockey3ME.crossfader = function (channel, control, value, status, group) {
       case 1:
         engine.setValue(group,"crossfader",-0.96875);
         break;
-      case 0;
+      case 0:
         engine.setValue(group,"crossfader",-1);
         break;
       default:

@@ -14,6 +14,8 @@ Jockey3ME.num_effectsValue = [0,0,0,0];
 Jockey3ME.effectsAvailable = 5; // Sets how many Effects are Loadable
 Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Turned
 Jockey3ME.CUP_value = 0;
+Jockey3ME.MixerDeck1 = 0;
+Jockey3ME.MixerDeck2 = 0;
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -375,4 +377,62 @@ Jockey3ME.CUP = function (channel, control, value, status, group) {
       midi.sendShortMsg(status,control,0);
     }
   }
+}
+
+Jockey3ME.MixerVol = function (channel, control, value, status, group) {
+  var currentDeck = parseInt(group.substring(8,9));
+  if (Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) {
+    currentDeck += 2;
+  } else if (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2) {
+    currentDeck += 2;
+  }
+  if (control == 0x2D || control == 0x6C) {
+    engine.setParameter("[Channel" + currentDeck + "]","pregain",(value / 127));
+  } else {
+    engine.setParameter("[Channel" + currentDeck + "]","volume",(value / 127));
+  }
+}
+
+Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
+  if (control == 0x3C && value == 0x7F) {
+    Jockey3ME.MixerDeck1 = 1;
+  } else if (control == 0x3C && value == 0x00) {
+    Jockey3ME.MixerDeck1 = 0;
+  } else if (control == 0x3F && value == 0x7F) {
+    Jockey3ME.MixerDeck2 = 1;
+  } else if (control == 0x3F && value == 0x00) {
+    Jockey3ME.MixerDeck2 = 0;
+  }
+}
+
+Jockey3ME.EQ = function (channel, control, value, status, group) {
+  var currentDeck = parseInt(group.substring(24,25));
+  if (Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) {
+    currentDeck += 2;
+  } else if (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2) {
+    currentDeck += 2;
+  }
+  switch (control) {
+    case 0x2E:
+      var eqKnop = 3;
+      break;
+    case 0x2F:
+      var eqKnop = 2;
+      break;
+    case 0x30:
+      var eqKnop = 1;
+      break;
+    case 0x6D:
+      var eqKnop = 3;
+      break;
+    case 0x6E:
+      var eqKnop = 2;
+      break;
+    case 0x6F:
+      var eqKnop = 1;
+      break;
+    default:
+      print("Error on EQ chosing");
+  }
+  engine.setParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, (value / 127));
 }

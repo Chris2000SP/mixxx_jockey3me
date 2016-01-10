@@ -1131,7 +1131,7 @@
                 <group>[Channel2]</group>
                 <key>pregain</key>
                 <status>0xB1</status>
-                <midino>0x6C</midino>
+                <midino>0x2D</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1140,7 +1140,7 @@
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter1</key>
                 <status>0xB1</status>
-                <midino>0x6F</midino>
+                <midino>0x30</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1149,7 +1149,7 @@
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter2</key>
                 <status>0xB1</status>
-                <midino>0x6E</midino>
+                <midino>0x2F</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1158,7 +1158,7 @@
                 <group>[EqualizerRack1_[Channel2]_Effect1]</group>
                 <key>parameter3</key>
                 <status>0xB1</status>
-                <midino>0x6D</midino>
+                <midino>0x2E</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1167,7 +1167,7 @@
                 <group>[Channel2]</group>
                 <key>volume</key>
                 <status>0xB1</status>
-                <midino>0x70</midino>
+                <midino>0x31</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1483,7 +1483,7 @@
                 <group>[Channel3]</group>
                 <key>pregain</key>
                 <status>0xB2</status>
-                <midino>0x6C</midino>
+                <midino>0x2D</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1492,7 +1492,7 @@
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter1</key>
                 <status>0xB2</status>
-                <midino>0x6F</midino>
+                <midino>0x30</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1501,7 +1501,7 @@
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter2</key>
                 <status>0xB2</status>
-                <midino>0x6E</midino>
+                <midino>0x2F</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1510,7 +1510,7 @@
                 <group>[EqualizerRack1_[Channel3]_Effect1]</group>
                 <key>parameter3</key>
                 <status>0xB2</status>
-                <midino>0x6D</midino>
+                <midino>0x2E</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1519,7 +1519,7 @@
                 <group>[Channel3]</group>
                 <key>volume</key>
                 <status>0xB2</status>
-                <midino>0x70</midino>
+                <midino>0x31</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1835,7 +1835,7 @@
                 <group>[Channel4]</group>
                 <key>pregain</key>
                 <status>0xB3</status>
-                <midino>0x6C</midino>
+                <midino>0x2D</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1844,7 +1844,7 @@
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter1</key>
                 <status>0xB3</status>
-                <midino>0x6F</midino>
+                <midino>0x30</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1853,7 +1853,7 @@
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter2</key>
                 <status>0xB3</status>
-                <midino>0x6E</midino>
+                <midino>0x2F</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1862,7 +1862,7 @@
                 <group>[EqualizerRack1_[Channel4]_Effect1]</group>
                 <key>parameter3</key>
                 <status>0xB3</status>
-                <midino>0x6D</midino>
+                <midino>0x2E</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1871,7 +1871,7 @@
                 <group>[Channel4]</group>
                 <key>volume</key>
                 <status>0xB3</status>
-                <midino>0x70</midino>
+                <midino>0x31</midino>
                 <options>
                     <normal/>
                 </options>

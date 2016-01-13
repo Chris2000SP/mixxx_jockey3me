@@ -17,7 +17,6 @@ Jockey3ME.CUP_value = 0;
 Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
 Jockey3ME.noVolHopValue = false;
-Jockey3ME.faderHopValue = false;
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -395,24 +394,12 @@ Jockey3ME.MixerVol = function (channel, control, value, status, group) {
     engine.setParameter("[Channel" + currentDeck + "]","pregain",(value / 127));
   } else {
     var noVolHop = engine.getParameter("[Channel" + currentDeck + "]","volume");
-    if (!((noVolHop - (value / 127)) < 0.1) || !((noVolHop - (value / 127)) > -0.1)) {
-      Jockey3ME.noVolHopValue = true;
-    } else {
+    if (!(!((noVolHop - (value / 127)) < 0.04) || !((noVolHop - (value / 127)) > -0.04))) {
       Jockey3ME.noVolHopValue = false;
     }
-    if (!Jockey3ME.noVolHopValue || !Jockey3ME.faderHopValue) {
+    if (!Jockey3ME.noVolHopValue) {
       engine.setParameter("[Channel" + currentDeck + "]","volume",(value / 127));
     }
-  }
-}
-
-Jockey3ME.faderHop = function (channel, control, value, status, group) {
-  if (Jockey3ME.faderHopValue && value == 0x7F) {
-    Jockey3ME.faderHopValue = false;
-    midi.sendShortMsg(status,control,0x00);
-  } else if (!Jockey3ME.faderHopValue && value == 0x7F) {
-    Jockey3ME.faderHopValue = true;
-    midi.sendShortMsg(status,control,0x7F);
   }
 }
 
@@ -426,6 +413,7 @@ Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
   } else if (control == 0x3F && value == 0x00) {
     Jockey3ME.MixerDeck2 = 0;
   }
+  Jockey3ME.noVolHopValue = true;
 }
 
 Jockey3ME.EQ = function (channel, control, value, status, group) {

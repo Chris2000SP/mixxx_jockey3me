@@ -843,7 +843,7 @@
                     <normal/>
                 </options>
             </control>
-            <control>
+            <!-- <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.faderHop</key>
                 <description>XF D Sets Vol Fader Sticking</description>
@@ -852,7 +852,7 @@
                 <options>
                     <script-binding/>
                 </options>
-            </control>
+            </control> -->
             <!-- [Channel2] Deck B -->
             <!-- Transport Section -->
             <control>

@@ -230,7 +230,7 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
   };
 
   // Leds
-  status = Jockey3ME.effectUnitValueLed(status);
+  status -= 32;
   if (EncoderKnopFX) {
     Jockey3ME.effectParamLedSet(currentDeck, EncoderKnopFX, status, control);
   } else if (EncoderKnopDryWet) {
@@ -259,7 +259,7 @@ Jockey3ME.effectSelectLedSetNumEffect = function (currentDeck, status, control, 
     Jockey3ME.num_effectsValue[currentDeck - 1] += value;
   }
   var newLedValue = parseInt((Jockey3ME.num_effectsValue[currentDeck - 1] / ledValue) * 127);
-  midi.sendShortMsg(Jockey3ME.effectUnitValueLed(status),control,newLedValue);
+  midi.sendShortMsg((status-32),control,newLedValue);
 }
 
 Jockey3ME.effectSelect = function (channel, control, value, status, group) {
@@ -272,7 +272,7 @@ Jockey3ME.effectSelect = function (channel, control, value, status, group) {
 }
 
 Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
-  status = Jockey3ME.effectUnitValueLed(status);
+  status -= 32;
   var num_parameters = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters");
   if (num_parameters > 3) {num_parameters = 3;};
   if (num_parameters) {
@@ -283,10 +283,6 @@ Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
   }
   Jockey3ME.effectMixLedSet(currentDeck, status, 29);
   // Jockey3ME.effectSelectLedSetNumEffect(currentDeck,status,92);
-}
-
-Jockey3ME.effectUnitValueLed = function (status) {
-  return status - 32;
 }
 
 // Browser Knop to Browse the Playlist
@@ -361,25 +357,13 @@ Jockey3ME.crossfader = function (channel, control, value, status, group) {
 }
 
 Jockey3ME.CUP = function (channel, control, value, status, group) {
-  if (engine.getValue(group,"play") == 1 && value == 0x7F) {
+  if (value == 0x7F) {
     engine.setValue(group,"cue_default",1);
     engine.setValue(group,"cue_default",0);
-    engine.setValue(group,"play",0);
     midi.sendShortMsg(status,control,127);
-    Jockey3ME.CUP_value = 1;
-  } else if (Jockey3ME.CUP_value == 1 && value == 0) {
+  } else {
     engine.setValue(group,"play",1);
     midi.sendShortMsg(status,control,0);
-    Jockey3ME.CUP_value = 0;
-  } else {
-    if (value == 0x7F) {
-      engine.setValue(group,"cue_default",1);
-      engine.setValue(group,"cue_default",0);
-      midi.sendShortMsg(status,control,127);
-    } else {
-      engine.setValue(group,"play",1);
-      midi.sendShortMsg(status,control,0);
-    }
   }
 }
 
@@ -418,9 +402,7 @@ Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
 
 Jockey3ME.EQ = function (channel, control, value, status, group) {
   var currentDeck = parseInt(group.substring(24,25));
-  if (Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) {
-    currentDeck += 2;
-  } else if (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2) {
+  if ((Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) || (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2)) {
     currentDeck += 2;
   }
   switch (control) {

@@ -16,7 +16,7 @@ Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Tur
 Jockey3ME.CUP_value = 0;
 Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
-Jockey3ME.noVolHopValue = false;
+Jockey3ME.noVolHopValue = [false,false,false,false,false];
 
 // Functions
 Jockey3ME.EffectLedMeterShow = function () {
@@ -369,19 +369,23 @@ Jockey3ME.CUP = function (channel, control, value, status, group) {
 
 Jockey3ME.MixerVol = function (channel, control, value, status, group) {
   var currentDeck = parseInt(group.substring(8,9));
-  if (Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) {
-    currentDeck += 2;
-  } else if (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2) {
+  if ((Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) || (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2)) {
     currentDeck += 2;
   }
   if (control == 0x2D || control == 0x6C) {
-    engine.setParameter("[Channel" + currentDeck + "]","pregain",(value / 127));
+	var noGainHop = engine.getParameter("[Channel" + currentDeck + "]","pregain");
+	if (!(!((noGainHop - (value / 127)) < 0.04) || !((noGainHop - (value / 127)) > -0.04))) {
+		Jockey3ME.noVolHopValue[1] = false;
+	}
+	if (!Jockey3ME.noVolHopValue[1]) {
+		engine.setParameter("[Channel" + currentDeck + "]","pregain",(value / 127));
+    }
   } else {
     var noVolHop = engine.getParameter("[Channel" + currentDeck + "]","volume");
     if (!(!((noVolHop - (value / 127)) < 0.04) || !((noVolHop - (value / 127)) > -0.04))) {
-      Jockey3ME.noVolHopValue = false;
+      Jockey3ME.noVolHopValue[0] = false;
     }
-    if (!Jockey3ME.noVolHopValue) {
+    if (!Jockey3ME.noVolHopValue[0]) {
       engine.setParameter("[Channel" + currentDeck + "]","volume",(value / 127));
     }
   }
@@ -397,7 +401,10 @@ Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
   } else if (control == 0x3F && value == 0x00) {
     Jockey3ME.MixerDeck2 = 0;
   }
-  Jockey3ME.noVolHopValue = true;
+  for (var i = 0; i < Jockey3ME.noVolHopValue.length; i++) {
+  	Jockey3ME.noVolHopValue[i] = true;
+  }
+  // Jockey3ME.noVolHopValue[0] = true;
 }
 
 Jockey3ME.EQ = function (channel, control, value, status, group) {
@@ -427,5 +434,11 @@ Jockey3ME.EQ = function (channel, control, value, status, group) {
     default:
       print("Error on EQ chosing");
   }
-  engine.setParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, (value / 127));
+  var noHighHop = engine.getParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop);
+  if (!(!((noHighHop - (value / 127)) < 0.04) || !((noHighHop - (value / 127)) > -0.04))) {
+  	Jockey3ME.noVolHopValue[eqKnop + 1] = false;
+  }
+  if (!Jockey3ME.noVolHopValue[eqKnop + 1]) {
+  	engine.setParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, (value / 127));
+  }
 }

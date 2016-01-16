@@ -86,7 +86,7 @@
                 </options>
             </control>
 			<control>
-				<group>[Master]</group>
+				<group>[Microphone]</group>
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x90</status>
@@ -96,7 +96,7 @@
 				</options>
 			</control>
 			<control>
-				<group>[Master]</group>
+				<group>[Microphone]</group>
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x91</status>
@@ -106,7 +106,7 @@
 				</options>
 			</control>
 			<control>
-				<group>[Master]</group>
+				<group>[Microphone]</group>
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x92</status>
@@ -116,7 +116,7 @@
 				</options>
 			</control>
 			<control>
-				<group>[Master]</group>
+				<group>[Microphone]</group>
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x93</status>

@@ -85,6 +85,76 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[Master]</group>
+				<key>talkoverDucking</key>
+				<description>Microphone Ducking</description>
+				<status>0x90</status>
+				<midino>0x08</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[Master]</group>
+				<key>talkoverDucking</key>
+				<description>Microphone Ducking</description>
+				<status>0x91</status>
+				<midino>0x08</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[Master]</group>
+				<key>talkoverDucking</key>
+				<description>Microphone Ducking</description>
+				<status>0x92</status>
+				<midino>0x08</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[Master]</group>
+				<key>talkoverDucking</key>
+				<description>Microphone Ducking</description>
+				<status>0x93</status>
+				<midino>0x08</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[Microphone]</group>
+				<key>pregain</key>
+				<description>Shift Filter Controls Microphone Gain</description>
+				<status>0xB0</status>
+				<midino>0x71</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[PreviewDeck]</group>
+				<key>LoadSelectedTrackAndPlay</key>
+				<description>Load And Play on Preview</description>
+				<status>0x90</status>
+				<midino>0x5B</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[PreviewDeck]</group>
+				<key>stop</key>
+				<description>Stop Preview</description>
+				<status>0x91</status>
+				<midino>0x5B</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <!-- Effect Chain 1 -->
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>

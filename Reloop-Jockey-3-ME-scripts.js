@@ -289,39 +289,50 @@ Jockey3ME.effectSelect = function (channel, control, value, status, group) {
 		engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + fxSelectKnop + "]","effect_selector",(value-64));
 	} else if (fxSelectKnop == 1 && Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1]) {
 		Jockey3ME.effectSelectParamLinkChose(currentDeck,value,control,status,fxSelectKnop);
+		print("FX Sel.1 Turned");
 	} else if (fxSelectKnop == 2 && Jockey3ME.fxSelectKnopPushIterator2[currentDeck - 1]) {
 		Jockey3ME.effectSelectParamLinkChose(currentDeck,value,control,status,fxSelectKnop);
+		print("FX Sel.2 Turned");
 	} else if (fxSelectKnop == 3 && Jockey3ME.fxSelectKnopPushIterator3[currentDeck - 1]) {
 		Jockey3ME.effectSelectParamLinkChose(currentDeck,value,control,status,fxSelectKnop);
+		print("FX Sel.3 Turned");
 	}
 }
 
 Jockey3ME.effectSelectParamLinkChose = function (currentDeck,value,control,status,fxSelectKnop) {
-	if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1] == 1) {
-		if ((value-64) == 1) {
-			if (!(Jockey3ME.fxSelectKnopPushLedTemp > engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + fxSelectKnop + "]","num_parameters"))) {
-				Jockey3ME.fxSelectKnopPushLedTemp += 1;
-			}
-		} else {
-			if (!(Jockey3ME.fxSelectKnopPushLedTemp < 0)) {
-				Jockey3ME.fxSelectKnopPushLedTemp -= 1;
-			}
-		}
-		midi.sendShortMsg((status-32),control,parseInt(Jockey3ME.fxSelectKnopPushLedTemp*10.5834));
-		Jockey3ME.fxSelectKnopParamChose = Jockey3ME.fxSelectKnopPushLedTemp;
-	} else if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1] == 2) {
-		if ((value-64) == 1) {
-			if (!(Jockey3ME.fxSelectKnopPushLedTemp > 4)) {
-				Jockey3ME.fxSelectKnopPushLedTemp += 1;
-			}
-		} else {
-			if (!(Jockey3ME.fxSelectKnopPushLedTemp < 0)) {
-				Jockey3ME.fxSelectKnopPushLedTemp -= 1;
-			}
-		}
-		midi.sendShortMsg((status-32),control,parseInt(Jockey3ME.fxSelectKnopPushLedTemp*10.5834));
-		Jockey3ME.fxSelectKnopParamLinkChose = Jockey3ME.fxSelectKnopPushLedTemp;
+	if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1] == 1 || Jockey3ME.fxSelectKnopPushIterator2[currentDeck - 1] == 1 || Jockey3ME.fxSelectKnopPushIterator3[currentDeck - 1] == 1) {
+		Jockey3ME.effectSelectParamLinkChoseOne(currentDeck,value,control,status,fxSelectKnop);
+	} else if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1] == 2 || Jockey3ME.fxSelectKnopPushIterator2[currentDeck - 1] == 2 || Jockey3ME.fxSelectKnopPushIterator3[currentDeck - 1] == 2) {
+		Jockey3ME.effectSelectParamLinkChoseTwo(currentDeck,value,control,status,fxSelectKnop);
 	}
+}
+
+Jockey3ME.effectSelectParamLinkChoseOne = function (currentDeck,value,control,status,fxSelectKnop) {
+	if ((value-64) == 1) {
+		if (!(Jockey3ME.fxSelectKnopPushLedTemp > engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + fxSelectKnop + "]","num_parameters"))) {
+			Jockey3ME.fxSelectKnopPushLedTemp += 1;
+		}
+	} else {
+		if (!(Jockey3ME.fxSelectKnopPushLedTemp < 0)) {
+			Jockey3ME.fxSelectKnopPushLedTemp -= 1;
+		}
+	}
+	midi.sendShortMsg((status-32),control,parseInt(Jockey3ME.fxSelectKnopPushLedTemp*10.5834));
+	Jockey3ME.fxSelectKnopParamChose = Jockey3ME.fxSelectKnopPushLedTemp;
+}
+
+Jockey3ME.effectSelectParamLinkChoseTwo = function (currentDeck,value,control,status,fxSelectKnop) {
+	if ((value-64) == 1) {
+		if (!(Jockey3ME.fxSelectKnopPushLedTemp > 4)) {
+			Jockey3ME.fxSelectKnopPushLedTemp += 1;
+		}
+	} else {
+		if (!(Jockey3ME.fxSelectKnopPushLedTemp < 0)) {
+			Jockey3ME.fxSelectKnopPushLedTemp -= 1;
+		}
+	}
+	midi.sendShortMsg((status-32),control,parseInt(Jockey3ME.fxSelectKnopPushLedTemp*10.5834));
+	Jockey3ME.fxSelectKnopParamLinkChose = Jockey3ME.fxSelectKnopPushLedTemp;
 }
 
 Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
@@ -345,6 +356,10 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 		if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + "]","loaded")) {
 			switch (Jockey3ME.fxSelectKnopPush[currentDeck-1]) {
 				case 1:
+					if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] == 0) {
+						Jockey3ME.fxSelectKnopParamLinkChose = 0;
+						Jockey3ME.fxSelectKnopParamChose = 0;
+					}
 					++Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1];
 					Jockey3ME.fxSelectKnopPushLedTemp = 0;
 					if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] > 2) {
@@ -354,9 +369,14 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 							print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
 						}
 					}
+					print("FX Sel.1 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				case 2:
+					if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] == 0) {
+						Jockey3ME.fxSelectKnopParamLinkChose = 0;
+						Jockey3ME.fxSelectKnopParamChose = 0;
+					}
 					++Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1];
 					Jockey3ME.fxSelectKnopPushLedTemp = 0;
 					if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] > 2) {
@@ -366,9 +386,14 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 							print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
 						}
 					}
+					print("FX Sel.2 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				case 3:
+					if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] == 0) {
+						Jockey3ME.fxSelectKnopParamChose = 0;
+						Jockey3ME.fxSelectKnopParamLinkChose = 0;
+					}
 					++Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1];
 					Jockey3ME.fxSelectKnopPushLedTemp = 0;
 					if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] > 2) {
@@ -378,6 +403,7 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 							print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
 						}
 					}
+					print("FX Sel.3 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				default:

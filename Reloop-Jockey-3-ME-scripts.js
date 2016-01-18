@@ -350,57 +350,135 @@ Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
 }
 
 Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
-	if (value == 0x7F) {
+	if (value == 0x00) {
 		var currentDeck = parseInt(group.substring(23,24));
 		Jockey3ME.fxSelectKnopPush[currentDeck-1] = control - 92;
 		if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + "]","loaded")) {
 			switch (Jockey3ME.fxSelectKnopPush[currentDeck-1]) {
 				case 1:
-					if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] == 0) {
-						Jockey3ME.fxSelectKnopParamLinkChose = 0;
-						Jockey3ME.fxSelectKnopParamChose = 0;
-					}
-					++Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1];
-					Jockey3ME.fxSelectKnopPushLedTemp = 0;
-					if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] > 2) {
-						Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] = 0;
-						if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
-							engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
-							print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+					fxSelectKnopPushBreak: {
+						for (var i = 0; i < Jockey3ME.fxSelectKnopPushIterator1.length; i++) {
+							if ((currentDeck-1) == i) {
+								continue;
+							}
+							if (Jockey3ME.fxSelectKnopPushIterator1[i]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						for (var j = 0; j < Jockey3ME.fxSelectKnopPushIterator2.length; j++) {
+							if (Jockey3ME.fxSelectKnopPushIterator2[j]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						for (var k = 0; k < Jockey3ME.fxSelectKnopPushIterator3.length; k++) {
+							if (Jockey3ME.fxSelectKnopPushIterator3[k]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] == 0) {
+							Jockey3ME.fxSelectKnopParamLinkChose = 0;
+							Jockey3ME.fxSelectKnopParamChose = 0;
+						}
+						++Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1];
+						Jockey3ME.fxSelectKnopPushLedTemp = 0;
+						if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] > 2) {
+							Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] = 0;
+							if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
+								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
+								print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+							}
 						}
 					}
 					print("FX Sel.1 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				case 2:
-					if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] == 0) {
-						Jockey3ME.fxSelectKnopParamLinkChose = 0;
-						Jockey3ME.fxSelectKnopParamChose = 0;
-					}
-					++Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1];
-					Jockey3ME.fxSelectKnopPushLedTemp = 0;
-					if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] > 2) {
-						Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] = 0;
-						if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
-							engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
-							print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+					fxSelectKnopPushBreak: {
+						for (var l = 0; l < Jockey3ME.fxSelectKnopPushIterator1.length; l++) {
+							if (Jockey3ME.fxSelectKnopPushIterator1[l]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						for (var m = 0; m < Jockey3ME.fxSelectKnopPushIterator2.length; m++) {
+							if ((currentDeck-1) == m) {
+								continue;
+							}
+							if (Jockey3ME.fxSelectKnopPushIterator2[m]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						for (var n = 0; n < Jockey3ME.fxSelectKnopPushIterator3.length; n++) {
+							if (Jockey3ME.fxSelectKnopPushIterator3[n]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] == 0) {
+							Jockey3ME.fxSelectKnopParamLinkChose = 0;
+							Jockey3ME.fxSelectKnopParamChose = 0;
+						}
+						++Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1];
+						Jockey3ME.fxSelectKnopPushLedTemp = 0;
+						if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] > 2) {
+							Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] = 0;
+							if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
+								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
+								print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+							}
 						}
 					}
 					print("FX Sel.2 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				case 3:
-					if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] == 0) {
-						Jockey3ME.fxSelectKnopParamChose = 0;
-						Jockey3ME.fxSelectKnopParamLinkChose = 0;
-					}
-					++Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1];
-					Jockey3ME.fxSelectKnopPushLedTemp = 0;
-					if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] > 2) {
-						Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] = 0;
-						if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
-							engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
-							print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+					fxSelectKnopPushBreak: {
+						for (var o = 0; o < Jockey3ME.fxSelectKnopPushIterator1.length; o++) {
+							if (Jockey3ME.fxSelectKnopPushIterator1[o]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						for (var p = 0; p < Jockey3ME.fxSelectKnopPushIterator2.length; p++) {
+							if (Jockey3ME.fxSelectKnopPushIterator2[p]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						for (var q = 0; q < Jockey3ME.fxSelectKnopPushIterator3.length; q++) {
+							if ((currentDeck-1) == q) {
+								continue;
+							}
+							if (Jockey3ME.fxSelectKnopPushIterator3[q]) {
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								break fxSelectKnopPushBreak;
+							}
+						}
+						if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] == 0) {
+							Jockey3ME.fxSelectKnopParamChose = 0;
+							Jockey3ME.fxSelectKnopParamLinkChose = 0;
+						}
+						++Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1];
+						Jockey3ME.fxSelectKnopPushLedTemp = 0;
+						if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] > 2) {
+							Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] = 0;
+							if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
+								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
+								print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+							}
 						}
 					}
 					print("FX Sel.3 Pushed");

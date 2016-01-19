@@ -105,9 +105,6 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
   var currentDeck = parseInt(group.substring(8,9));
     // See if we're scratching. If not, skip this.
     if (!engine.isScratching(currentDeck)) {
-      if (newValue > 1 || newValue < -1) {
-        newValue /= 2;  // If Jogwheel Resolution is High
-      }
       engine.setValue(group, "jog", newValue);
       return;
    }

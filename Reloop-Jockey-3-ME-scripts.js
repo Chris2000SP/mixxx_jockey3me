@@ -19,6 +19,7 @@ Jockey3ME.MixerDeck2 = 0;
 Jockey3ME.noVolHopValue = [false,false,false,false,false];
 
 // Functions
+// Effect Led Show (Funny Led Effect on FX Dry/Wet Encoder Led Ring)
 Jockey3ME.EffectLedMeterShow = function () {
   midi.sendShortMsg(0x90,0x1D,Jockey3ME.EffectLedMeterValue);
   midi.sendShortMsg(0x91,0x1D,Jockey3ME.EffectLedMeterValue);
@@ -34,7 +35,7 @@ Jockey3ME.EffectLedMeterShow = function () {
     }
   };
 }
-// Main LedShow Script
+// Main LedShow Script (Funny Led Effect on VuMeter)
 Jockey3ME.LedMeterShow = function() {
   midi.sendShortMsg(0x90,0x21,Jockey3ME.LedMeterShowValue);
   midi.sendShortMsg(0x91,0x21,Jockey3ME.LedMeterShowValue);
@@ -48,7 +49,8 @@ Jockey3ME.LedMeterShow = function() {
   if (Jockey3ME.LedMeterShowValueTwo && Jockey3ME.LedMeterShowValue <= 0) {
     engine.stopTimer(Jockey3ME.LedMeterShowTimer);
     Jockey3ME.LedMeterShowTimer = 0;
-    Jockey3ME.VuMeter = engine.beginTimer(20,"Jockey3ME.fVuMeter()"); // Start Every 20ms the fVuMeter Function
+    midi.sendShortMsg(0x90,0x21,0x00);
+	midi.sendShortMsg(0x91,0x21,0x00);
     Jockey3ME.EffectLedMeter = engine.beginTimer(20,"Jockey3ME.EffectLedMeterShow()");
   };
 }
@@ -71,27 +73,7 @@ Jockey3ME.init = function () {
     midi.sendShortMsg(0x92,j,0x00);
     midi.sendShortMsg(0x93,j,0x00);
   };
-  Jockey3ME.LedShowBeginTimer = engine.beginTimer(500,"Jockey3ME.LedShowBegin()",1); // LedShow Script Starts Here after 500ms
-}
-
-// Sets VuMeter new Value to Leds
-Jockey3ME.fVuMeter = function () {
-  var VuVal1 = engine.getValue("[Channel1]","VuMeter");
-  var VuVal2 = engine.getValue("[Channel2]","VuMeter");
-  var VuVal3 = engine.getValue("[Channel3]","VuMeter");
-  var VuVal4 = engine.getValue("[Channel4]","VuMeter");
-  VuVal1 = VuVal1 * 10;
-  VuVal1 = parseInt(VuVal1);
-  VuVal2 = VuVal2 * 10;
-  VuVal2 = parseInt(VuVal2);
-  VuVal3 = VuVal3 * 10;
-  VuVal3 = parseInt(VuVal3);
-  VuVal4 = VuVal4 * 10;
-  VuVal4 = parseInt(VuVal4);
-  midi.sendShortMsg(0x90,0x21,VuVal1);
-  midi.sendShortMsg(0x91,0x21,VuVal2);
-  midi.sendShortMsg(0x92,0x21,VuVal3);
-  midi.sendShortMsg(0x93,0x21,VuVal4);
+  engine.beginTimer(500,"Jockey3ME.LedShowBegin()",1); // LedShow Script Starts Here after 500ms
 }
 
 Jockey3ME.shutdown = function () {
@@ -124,9 +106,6 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
   var currentDeck = parseInt(group.substring(8,9));
     // See if we're scratching. If not, skip this.
     if (!engine.isScratching(currentDeck)) {
-      if (newValue > 1 || newValue < -1) {
-        newValue /= 2;  // If Jogwheel Resolution is High
-      }
       engine.setValue(group, "jog", newValue);
       return;
    }

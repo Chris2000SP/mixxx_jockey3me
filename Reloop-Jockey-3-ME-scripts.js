@@ -9,7 +9,6 @@ Jockey3ME.VuMeter = 0;
 Jockey3ME.scratching = [];
 Jockey3ME.hotcueClearVal = 0;
 Jockey3ME.crossfaderScratch = false;
-Jockey3ME.effectSelectTimer = 0;
 Jockey3ME.num_effectsValue = [0,0,0,0];
 Jockey3ME.effectsAvailable = 5; // Sets how many Effects are Loadable
 Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Turned
@@ -28,10 +27,16 @@ Jockey3ME.EffectLedMeterShow = function () {
     Jockey3ME.EffectLedMeter = 0;
 
     // Sets Effect Leds
-    for (var i = 1, j = 176; i <= 4; i++) {
-      Jockey3ME.effectSelectLedSet(j,i);
-      j++;
-    }
+    	/*for (var i = 1, j = 176; i <= 4; i++) {
+			Jockey3ME.effectSelectLedSet(j,i);
+			j++;
+		}*/
+		for (var i = 1; i <= 4; i++) {
+			for (var j = 1; j <= 3; j++) {
+				engine.trigger("[EffectRack1_EffectUnit" + i + "_Effect1]", "parameter" + j);
+			}
+			engine.trigger("[EffectRack1_EffectUnit" + i + "]", "mix");
+		}
   };
 }
 // Main LedShow Script
@@ -71,6 +76,12 @@ Jockey3ME.init = function () {
     midi.sendShortMsg(0x93,j,0x00);
   };
   Jockey3ME.LedShowBeginTimer = engine.beginTimer(500,"Jockey3ME.LedShowBegin()",1); // LedShow Script Starts Here after 500ms
+	for (var i = 1; i <= 4; i++) {
+		for (var j = 1; j <= 3; j++) {
+			engine.connectControl("[EffectRack1_EffectUnit" + i + "_Effect1]","parameter" + j,"Jockey3ME.FX_Param_Led");
+		}
+		engine.connectControl("[EffectRack1_EffectUnit" + i + "]","mix","Jockey3ME.FX_DryWet_Led");
+	}
 }
 
 Jockey3ME.shutdown = function () {
@@ -140,33 +151,26 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
   var interval = 0.04;
   var min = 0;
   var max = 1;
-  switch (control) {
-    case 29:
-      EncoderKnopDryWet = 1;
-      break;
-    default:
-      EncoderKnopFX = control - 29;
-      break;
-  }
+	if (control == 29) {
+		EncoderKnopDryWet = 1;
+	} else {
+		EncoderKnopFX = control - 29;
+	}
   if (!EncoderKnopDryWet) {
     if (value == 0x41) {
       var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
       newVal = curVal + interval;
-      if (newVal > max) newVal = max;
     } else {
       var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
       newVal = curVal - interval;
-      if (newVal < min) newVal = min;
     }
   } else {
     if (value == 0x41) {
       var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
       newVal = curVal + interval;
-      if (newVal > max) newVal = max;
     } else {
       var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
       newVal = curVal - interval;
-      if (newVal < min) newVal = min;
     }
   }
   switch (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters")) {
@@ -184,24 +188,25 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
   };
 
   // Leds
-  status -= 32;
-  if (EncoderKnopFX) {
-    Jockey3ME.effectParamLedSet(currentDeck, EncoderKnopFX, status, control);
-  } else if (EncoderKnopDryWet) {
-    Jockey3ME.effectMixLedSet(currentDeck,status,control);
-  };
+
+	if (EncoderKnopFX) {
+		engine.trigger("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + EncoderKnopFX);
+	} else if (EncoderKnopDryWet) {
+		engine.trigger("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
+	}
 }
 
-Jockey3ME.effectParamLedSet = function (currentDeck, index, status, control) {
-  var ledValue = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "parameter" + index);
-  ledValue = parseInt(ledValue * 127);
-  midi.sendShortMsg(status,control,ledValue);
+Jockey3ME.FX_Param_Led = function (group, value, control) {
+	var currentDeck = parseInt(group.substring(23,24));
+	var knop = parseInt(control.substring(9,10));
+	midi.sendShortMsg(0x90+(currentDeck-1),0x1E+(knop-1),(value*127));
+	print("FX Param Led on Deck: " + currentDeck + " Knop: " + knop + " has value: " + value);
 }
 
-Jockey3ME.effectMixLedSet = function (currentDeck, status, control) {
-  var ledValue = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]", "mix");
-  ledValue = parseInt(ledValue * 127);
-  midi.sendShortMsg(status,control,ledValue);
+Jockey3ME.FX_DryWet_Led = function (group, value, control) {
+	var currentDeck = parseInt(group.substring(23,24));
+	midi.sendShortMsg(0x90+(currentDeck-1),0x1D,(value*127));
+	print("FX DryWet Led on Deck: " + currentDeck + " has value: " + value);
 }
 
 Jockey3ME.effectSelectLedSetNumEffect = function (currentDeck, status, control, value) {
@@ -221,23 +226,18 @@ Jockey3ME.effectSelect = function (channel, control, value, status, group) {
   engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "]", "chain_selector", (value-64));
 
   // Set Leds
-  Jockey3ME.effectSelectTimer = engine.beginTimer(100, "Jockey3ME.effectSelectLedSet(" + status + "," + currentDeck + ")",1);
+  // engine.beginTimer(100, "Jockey3ME.effectSelectLedSet(" + status + "," + currentDeck + ")",1);
+	var num_parameters = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters");
+	if (num_parameters > 3) {
+		num_parameters = 3;
+	}
+	for (var i = 1; i <= num_parameters; i++) {
+		engine.trigger("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + i);
+	}
+	engine.trigger("[EffectRack1_EffectUnit" + currentDeck + "]","mix");
   Jockey3ME.effectSelectLedSetNumEffect(currentDeck,status,92,(value-64));
 }
 
-Jockey3ME.effectSelectLedSet = function (status, currentDeck) {
-  status -= 32;
-  var num_parameters = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters");
-  if (num_parameters > 3) {num_parameters = 3;};
-  if (num_parameters) {
-    for (var i = 1, j = 30; i <= num_parameters; i++) {
-      Jockey3ME.effectParamLedSet(currentDeck, i, status, j);
-      j++;
-    };
-  }
-  Jockey3ME.effectMixLedSet(currentDeck, status, 29);
-  // Jockey3ME.effectSelectLedSetNumEffect(currentDeck,status,92);
-}
 
 // Browser Knop to Browse the Playlist
 Jockey3ME.TraxEncoderTurn = function (channel, control, value, status, group) {
@@ -260,10 +260,8 @@ Jockey3ME.loop_double_halve = function (channel, control, value, status, group) 
 
   if (newValue == 1) {
     engine.setValue(group,"loop_double",1);
-    engine.setValue(group,"loop_double",0);
   } else {
     engine.setValue(group,"loop_halve",1);
-    engine.setValue(group,"loop_halve",0);
   }
 }
 

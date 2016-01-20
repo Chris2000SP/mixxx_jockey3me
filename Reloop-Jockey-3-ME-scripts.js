@@ -45,11 +45,9 @@ Jockey3ME.LedMeterShow = function() {
   }
   if (Jockey3ME.LedMeterShowValue > 10) Jockey3ME.LedMeterShowValueTwo = true;
   // Stop The LedShow and Start Scanning VuMeter
-  if (Jockey3ME.LedMeterShowValueTwo && Jockey3ME.LedMeterShowValue <= 0) {
+  if (Jockey3ME.LedMeterShowValueTwo && Jockey3ME.LedMeterShowValue < 0) {
     engine.stopTimer(Jockey3ME.LedMeterShowTimer);
     Jockey3ME.LedMeterShowTimer = 0;
-	midi.sendShortMsg(0x90,0x21,0x00);
-	midi.sendShortMsg(0x91,0x21,0x00);
     Jockey3ME.EffectLedMeter = engine.beginTimer(20,"Jockey3ME.EffectLedMeterShow()");
   };
 }
@@ -83,7 +81,6 @@ Jockey3ME.shutdown = function () {
     midi.sendShortMsg(0x93,i,0x00);
   };
   engine.stopTimer(Jockey3ME.VuMeter);
-  Jockey3ME.VuMeter = 0;
 }
 
 // The button that enables/disables scratching
@@ -113,44 +110,23 @@ Jockey3ME.wheelTurn = function (channel, control, value, status, group) {
 
 // Hotcues
 Jockey3ME.hotcue_activate = function (channel, control, value, status, group) {
-  Jockey3ME.hotc = Jockey3ME.hotcue_buttonSelect(control);
+	var hotc = control - 10;
 
-  if (!Jockey3ME.hotcueClearVal && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 0 && value == 0x7F) {
-    engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",1);
-    engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",0);
-  } else if (Jockey3ME.hotcueClearVal && engine.getValue(group,"hotcue_"+Jockey3ME.hotc+"_enabled") == 1 && value == 0x7F) {
-    engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_clear",1);
-    engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_clear",0);
-  } else if (value == 0x7F) {
-    engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",1);
-    engine.setValue(group,"hotcue_"+Jockey3ME.hotc+"_activate",0);
-  }
-}
-
-Jockey3ME.hotcue_buttonSelect = function (control) {
-  Jockey3ME.hotc_midino = [11,12,13,14,15,16,17,18];
-  for (var i = 0; i < Jockey3ME.hotc_midino.length; i++) {
-    switch (control) {
-      case Jockey3ME.hotc_midino[i]:
-        return Jockey3ME.hotc_midino[i] - 10;
-        break;
-    }
-  };
-}
-
-Jockey3ME.hotcueClearVal_off = function() {
-  if (Jockey3ME.hotcueClearVal) {
-    Jockey3ME.hotcueClearVal = 0;
-  };
+	if (!Jockey3ME.hotcueClearVal && value == 0x7F) {
+		engine.setValue(group,"hotcue_"+hotc+"_activate",1);
+	} else if (Jockey3ME.hotcueClearVal && engine.getValue(group,"hotcue_"+hotc+"_enabled") == 1 && value == 0x7F) {
+		engine.setValue(group,"hotcue_"+hotc+"_clear",1);
+	} else if (value == 0x00) {
+		engine.setValue(group,"hotcue_"+hotc+"_activate",0);
+	}
 }
 
 Jockey3ME.hotcue_clear = function (channel, control, value, status, group) {
    if (control == 0x09 && value == 0x7F) {
-    Jockey3ME.hotcueClearVal_off();
     Jockey3ME.hotcueClearVal = 1;
     midi.sendShortMsg(status,control,0x01);
    } else {
-    Jockey3ME.hotcueClearVal_off();
+    Jockey3ME.hotcueClearVal = 0;
     midi.sendShortMsg(status,control,0x00);
    };
 }

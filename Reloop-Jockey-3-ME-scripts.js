@@ -197,16 +197,16 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
 }
 
 Jockey3ME.FX_Param_Led = function (group, value, control) {
-	var currentDeck = parseInt(group.substring(23,24));
+	var currentDeck = parseInt(value.substring(23,24));
 	var knop = parseInt(control.substring(9,10));
-	midi.sendShortMsg(0x90+(currentDeck-1),0x1E+(knop-1),(value*127));
-	print("FX Param Led on Deck: " + currentDeck + " Knop: " + knop + " has value: " + value);
+	var newValue = engine.getParameter(value,control);
+	midi.sendShortMsg(0x90+(currentDeck-1),0x1E+(knop-1),(newValue*127));
 }
 
 Jockey3ME.FX_DryWet_Led = function (group, value, control) {
-	var currentDeck = parseInt(group.substring(23,24));
-	midi.sendShortMsg(0x90+(currentDeck-1),0x1D,(value*127));
-	print("FX DryWet Led on Deck: " + currentDeck + " has value: " + value);
+	var currentDeck = parseInt(value.substring(23,24));
+	var newValue = engine.getParameter(value,control);
+	midi.sendShortMsg(0x90+(currentDeck-1),0x1D,(newValue*127));
 }
 
 Jockey3ME.effectSelectLedSetNumEffect = function (currentDeck, status, control, value) {

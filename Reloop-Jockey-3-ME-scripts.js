@@ -82,6 +82,13 @@ Jockey3ME.init = function () {
 		}
 		engine.connectControl("[EffectRack1_EffectUnit" + i + "]","mix","Jockey3ME.FX_DryWet_Led");
 	}
+	for (var k = 1; k <= 4; k++) {
+		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
+		}
+		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",true);
+	}
 }
 
 Jockey3ME.shutdown = function () {
@@ -197,7 +204,7 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
 }
 
 Jockey3ME.FX_Param_Led = function (group, value, control) {
-	var currentDeck = parseInt(value.substring(23,24));
+	var currentDeck = parseInt(value.substring(23,24)); // Why i have to use value and not group?
 	var knop = parseInt(control.substring(9,10));
 	var newValue = engine.getParameter(value,control);
 	midi.sendShortMsg(0x90+(currentDeck-1),0x1E+(knop-1),(newValue*127));
@@ -226,7 +233,6 @@ Jockey3ME.effectSelect = function (channel, control, value, status, group) {
   engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "]", "chain_selector", (value-64));
 
   // Set Leds
-  // engine.beginTimer(100, "Jockey3ME.effectSelectLedSet(" + status + "," + currentDeck + ")",1);
 	var num_parameters = engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]", "num_parameters");
 	if (num_parameters > 3) {
 		num_parameters = 3;
@@ -325,21 +331,9 @@ Jockey3ME.MixerVol = function (channel, control, value, status, group) {
     currentDeck += 2;
   }
   if (control == 0x2D || control == 0x6C) {
-	var noGainHop = engine.getParameter("[Channel" + currentDeck + "]","pregain");
-	if (!(!((noGainHop - (value / 127)) < 0.04) || !((noGainHop - (value / 127)) > -0.04))) {
-		Jockey3ME.noVolHopValue[1] = false;
-	}
-	if (!Jockey3ME.noVolHopValue[1]) {
-		engine.setParameter("[Channel" + currentDeck + "]","pregain",(value / 127));
-    }
+	  engine.setParameter("[Channel" + currentDeck + "]","pregain",(value / 127));
   } else {
-    var noVolHop = engine.getParameter("[Channel" + currentDeck + "]","volume");
-    if (!(!((noVolHop - (value / 127)) < 0.04) || !((noVolHop - (value / 127)) > -0.04))) {
-      Jockey3ME.noVolHopValue[0] = false;
-    }
-    if (!Jockey3ME.noVolHopValue[0]) {
-      engine.setParameter("[Channel" + currentDeck + "]","volume",(value / 127));
-    }
+	  engine.setParameter("[Channel" + currentDeck + "]","volume",(value / 127));
   }
 }
 
@@ -353,10 +347,6 @@ Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
   } else if (control == 0x3F && value == 0x00) {
     Jockey3ME.MixerDeck2 = 0;
   }
-  for (var i = 0; i < Jockey3ME.noVolHopValue.length; i++) {
-  	Jockey3ME.noVolHopValue[i] = true;
-  }
-  // Jockey3ME.noVolHopValue[0] = true;
 }
 
 Jockey3ME.EQ = function (channel, control, value, status, group) {
@@ -386,11 +376,5 @@ Jockey3ME.EQ = function (channel, control, value, status, group) {
     default:
       print("Error on EQ chosing");
   }
-  var noHighHop = engine.getParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop);
-  if (!(!((noHighHop - (value / 127)) < 0.04) || !((noHighHop - (value / 127)) > -0.04))) {
-  	Jockey3ME.noVolHopValue[eqKnop + 1] = false;
-  }
-  if (!Jockey3ME.noVolHopValue[eqKnop + 1]) {
-  	engine.setParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, (value / 127));
-  }
+	engine.setParameter("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, (value / 127));
 }

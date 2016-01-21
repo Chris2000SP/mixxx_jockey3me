@@ -320,9 +320,9 @@ Jockey3ME.MixerVol = function (channel, control, value, status, group) {
     currentDeck += 2;
   }
   if (control == 0x2D || control == 0x6C) {
-	  engine.setValue("[Channel" + currentDeck + "]","pregain",(value / 127));
+	  engine.setValue("[Channel" + currentDeck + "]","pregain",script.absoluteNonLin(value,0,1,4,0,127));
   } else {
-	  engine.setValue("[Channel" + currentDeck + "]","volume",(value / 127));
+	  engine.setValue("[Channel" + currentDeck + "]","volume",script.absoluteNonLin(value,0,0.25,1,0,127));
   }
 }
 
@@ -365,5 +365,5 @@ Jockey3ME.EQ = function (channel, control, value, status, group) {
     default:
       print("Error on EQ chosing");
   }
-	engine.setValue("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, (value / 64));
+	engine.setValue("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, script.absoluteNonLin(value,0,1,4,0,127));
 }

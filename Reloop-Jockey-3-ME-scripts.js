@@ -314,17 +314,6 @@ Jockey3ME.crossfader = function (channel, control, value, status, group) {
   }
 }
 
-Jockey3ME.CUP = function (channel, control, value, status, group) {
-  if (value == 0x7F) {
-    engine.setValue(group,"cue_default",1);
-    engine.setValue(group,"cue_default",0);
-    midi.sendShortMsg(status,control,127);
-  } else {
-    engine.setValue(group,"play",1);
-    midi.sendShortMsg(status,control,0);
-  }
-}
-
 Jockey3ME.MixerVol = function (channel, control, value, status, group) {
   var currentDeck = parseInt(group.substring(8,9));
   if ((Jockey3ME.MixerDeck1 == 1 && currentDeck == 1) || (Jockey3ME.MixerDeck2 == 1 && currentDeck == 2)) {

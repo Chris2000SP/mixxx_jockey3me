@@ -814,7 +814,7 @@
                 <key>rate</key>
                 <status>0xE0</status>
                 <options>
-                    <normal/>
+                    <Soft-takeover/>
                 </options>
             </control>
             <control>
@@ -1180,7 +1180,7 @@
                 <key>rate</key>
                 <status>0xE1</status>
                 <options>
-                    <normal/>
+                    <Soft-takeover/>
                 </options>
             </control>
             <control>
@@ -1544,7 +1544,7 @@
                 <key>rate</key>
                 <status>0xE2</status>
                 <options>
-                    <normal/>
+                    <Soft-takeover/>
                 </options>
             </control>
             <control>
@@ -1851,7 +1851,7 @@
                 <key>rate</key>
                 <status>0xE3</status>
                 <options>
-                    <normal/>
+                    <Soft-takeover/>
                 </options>
             </control>
             <control>

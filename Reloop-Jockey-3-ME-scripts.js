@@ -61,7 +61,7 @@ Jockey3ME.LedShowBegin = function () {
   Jockey3ME.LedMeterShowTimer = engine.beginTimer(40,"Jockey3ME.LedMeterShow()");
 }
 
-// Init Script at Programmstart
+// Init Script at Programm start
 Jockey3ME.init = function () {
   for (var i = 1; i < 120; i++) {
     midi.sendShortMsg(0x90,i,0x7F);

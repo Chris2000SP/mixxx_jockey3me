@@ -18,6 +18,7 @@ Jockey3ME.fxSelectKnopPushIterator3 = [0,0,0,0];
 Jockey3ME.fxSelectKnopPushLedTemp = 0;
 Jockey3ME.fxSelectKnopParamChose = 0;
 Jockey3ME.fxSelectKnopParamLinkChose = 0;
+Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
 Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Turned
 Jockey3ME.CUP_value = 0;
 Jockey3ME.MixerDeck1 = 0;
@@ -163,8 +164,6 @@ Jockey3ME.effectParam = function (channel, control, value, status, group) {
   var EncoderKnopFX = 0;
   var newVal = 0;
   var interval = 0.04;
-  var min = 0;
-  var max = 1;
 	if (control == 29) {
 		EncoderKnopDryWet = 1;
 	} else {
@@ -276,6 +275,8 @@ Jockey3ME.effectSelectParamLinkChose = function (currentDeck,value,control,statu
 		Jockey3ME.effectSelectParamLinkChoseOne(currentDeck,value,control,status,fxSelectKnop);
 	} else if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1] == 2 || Jockey3ME.fxSelectKnopPushIterator2[currentDeck - 1] == 2 || Jockey3ME.fxSelectKnopPushIterator3[currentDeck - 1] == 2) {
 		Jockey3ME.effectSelectParamLinkChoseTwo(currentDeck,value,control,status,fxSelectKnop);
+	} else if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck - 1] == 3 || Jockey3ME.fxSelectKnopPushIterator2[currentDeck - 1] == 3 || Jockey3ME.fxSelectKnopPushIterator3[currentDeck - 1] == 3) {
+		Jockey3ME.effectSelectParamLinkChoseThree(currentDeck,value,control,status,fxSelectKnop);
 	}
 }
 
@@ -313,6 +314,19 @@ Jockey3ME.effectSelectParamLinkChoseTwo = function (currentDeck,value,control,st
 // >>>>>>> big_effects
 }
 
+Jockey3ME.effectSelectParamLinkChoseThree = function (currentDeck,value,control,status,fxSelectKnop) {
+	if ((value-64) == 1) {
+		if (!(Jockey3ME.fxSelectKnopPushLedTemp > 1)) {
+			Jockey3ME.fxSelectKnopPushLedTemp += 1;
+		}
+	} else {
+		if (!(Jockey3ME.fxSelectKnopPushLedTemp < 0)) {
+			Jockey3ME.fxSelectKnopPushLedTemp -= 1;
+		}
+	}
+	midi.sendShortMsg((status-32),control,parseInt(Jockey3ME.fxSelectKnopPushLedTemp*10.5834));
+	Jockey3ME.fxSelectKnopParamLinkInverseChose = Jockey3ME.fxSelectKnopPushLedTemp;
+}
 
 Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 	if (value == 0x00) {
@@ -347,20 +361,24 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 							}
 						}
 						if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] == 0) {
+							Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
 							Jockey3ME.fxSelectKnopParamLinkChose = 0;
 							Jockey3ME.fxSelectKnopParamChose = 0;
 						}
 						++Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1];
 						Jockey3ME.fxSelectKnopPushLedTemp = 0;
-						if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] > 2) {
+						if (Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] > 3) {
 							Jockey3ME.fxSelectKnopPushIterator1[currentDeck-1] = 0;
 							if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
 								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
-								print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect1]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_inverse",Jockey3ME.fxSelectKnopParamLinkInverseChose);
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								engine.beginTimer(800,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(1000,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
 							}
 						}
 					}
-					print("FX Sel.1 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				case 2:
@@ -390,20 +408,24 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 							}
 						}
 						if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] == 0) {
+							Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
 							Jockey3ME.fxSelectKnopParamLinkChose = 0;
 							Jockey3ME.fxSelectKnopParamChose = 0;
 						}
 						++Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1];
 						Jockey3ME.fxSelectKnopPushLedTemp = 0;
-						if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] > 2) {
+						if (Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] > 3) {
 							Jockey3ME.fxSelectKnopPushIterator2[currentDeck-1] = 0;
 							if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
 								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
-								print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect2]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_inverse",Jockey3ME.fxSelectKnopParamLinkInverseChose);
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								engine.beginTimer(800,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(1000,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
 							}
 						}
 					}
-					print("FX Sel.2 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				case 3:
@@ -435,18 +457,22 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 						if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] == 0) {
 							Jockey3ME.fxSelectKnopParamChose = 0;
 							Jockey3ME.fxSelectKnopParamLinkChose = 0;
+							Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
 						}
 						++Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1];
 						Jockey3ME.fxSelectKnopPushLedTemp = 0;
-						if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] > 2) {
+						if (Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] > 3) {
 							Jockey3ME.fxSelectKnopPushIterator3[currentDeck-1] = 0;
 							if (engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_loaded")) {
 								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_type",Jockey3ME.fxSelectKnopParamLinkChose);
-								print("EffectChain" + currentDeck + " Effect" + Jockey3ME.fxSelectKnopPush[currentDeck-1] + " Parameter" + Jockey3ME.fxSelectKnopParamChose + " Set to Linktype " + Jockey3ME.fxSelectKnopParamLinkChose);
+								engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect3]","parameter" + Jockey3ME.fxSelectKnopParamChose + "_link_inverse",Jockey3ME.fxSelectKnopParamLinkInverseChose);
+								engine.beginTimer(400,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(600,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
+								engine.beginTimer(800,"midi.sendShortMsg(" + status + "," + control + ",0x7F)",1);
+								engine.beginTimer(1000,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
 							}
 						}
 					}
-					print("FX Sel.3 Pushed");
 					Jockey3ME.fxSelectKnopPush[currentDeck-1] = 0;
 					break;
 				default:
@@ -460,6 +486,15 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 		midi.sendShortMsg(status,control,0x7F);
 		engine.beginTimer(200,"midi.sendShortMsg(" + status + "," + control + ",0x00)",1);
 	}
+}
+
+Jockey3ME.effectSuperKnop = function (channel, control, value, status, group) {
+	var newValue = (value-64);
+	var currentDeck = parseInt(group.substring(23,24));
+	var interval = 0.00075;
+	var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1");
+	newValue = curVal + (interval * newValue);
+	engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1",newValue);
 }
 
 // Browser Knop to Browse the Playlist

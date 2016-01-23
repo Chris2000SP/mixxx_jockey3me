@@ -5,7 +5,6 @@ Jockey3ME.EffectLedMeter = 0;
 Jockey3ME.EffectLedMeterValue = 1;
 Jockey3ME.LedMeterShowValue = 1;
 Jockey3ME.LedMeterShowValueTwo = false;
-Jockey3ME.VuMeter = 0;
 Jockey3ME.scratching = [];
 Jockey3ME.hotcueClearVal = 0;
 Jockey3ME.crossfaderScratch = false;
@@ -19,13 +18,15 @@ Jockey3ME.fxSelectKnopPushLedTemp = 0;
 Jockey3ME.fxSelectKnopParamChose = 0;
 Jockey3ME.fxSelectKnopParamLinkChose = 0;
 Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
-Jockey3ME.move_beat_value = 4; // Sets how many Beats Jumping when "MOVE" is Turned
+Jockey3ME.loop_move_value = 4; // Sets how many a Loop Jumping Beats when "MOVE" is Turned
+Jockey3ME.loop_move_bool = false;
 Jockey3ME.CUP_value = 0;
 Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
 Jockey3ME.noVolHopValue = [false,false,false,false,false];
 
 // Functions
+// Funny Led show on FX Dry/Wet
 Jockey3ME.EffectLedMeterShow = function () {
   midi.sendShortMsg(0x90,0x1D,Jockey3ME.EffectLedMeterValue);
   midi.sendShortMsg(0x91,0x1D,Jockey3ME.EffectLedMeterValue);
@@ -35,10 +36,6 @@ Jockey3ME.EffectLedMeterShow = function () {
     Jockey3ME.EffectLedMeter = 0;
 
     // Sets Effect Leds
-    	/*for (var i = 1, j = 176; i <= 4; i++) {
-			Jockey3ME.effectSelectLedSet(j,i);
-			j++;
-		}*/
 		for (var i = 1; i <= 4; i++) {
 			for (var j = 1; j <= 3; j++) {
 				engine.trigger("[EffectRack1_EffectUnit" + i + "_Effect1]", "parameter" + j);
@@ -47,7 +44,7 @@ Jockey3ME.EffectLedMeterShow = function () {
 		}
   };
 }
-// Main LedShow Script
+// Funny Led Show on VuMeter
 Jockey3ME.LedMeterShow = function() {
   midi.sendShortMsg(0x90,0x21,Jockey3ME.LedMeterShowValue);
   midi.sendShortMsg(0x91,0x21,Jockey3ME.LedMeterShowValue);
@@ -57,7 +54,7 @@ Jockey3ME.LedMeterShow = function() {
     --Jockey3ME.LedMeterShowValue;
   }
   if (Jockey3ME.LedMeterShowValue > 10) Jockey3ME.LedMeterShowValueTwo = true;
-  // Stop The LedShow and Start Scanning VuMeter
+  // Stop The LedShow start Show on FX
   if (Jockey3ME.LedMeterShowValueTwo && Jockey3ME.LedMeterShowValue < 0) {
     engine.stopTimer(Jockey3ME.LedMeterShowTimer);
     Jockey3ME.LedMeterShowTimer = 0;
@@ -106,7 +103,6 @@ Jockey3ME.shutdown = function () {
     midi.sendShortMsg(0x92,i,0x00);
     midi.sendShortMsg(0x93,i,0x00);
   };
-  engine.stopTimer(Jockey3ME.VuMeter);
 }
 
 // The button that enables/disables scratching
@@ -523,9 +519,27 @@ Jockey3ME.loop_double_halve = function (channel, control, value, status, group) 
   }
 }
 
-Jockey3ME.move_beat = function (channel, control, value, status, group) {
+Jockey3ME.loop_move = function (channel, control, value, status, group) {
   var newValue = (value-64);
-  engine.setValue(group,"beatjump",(newValue*Jockey3ME.move_beat_value));
+	if (status == 0xB0 && !Jockey3ME.loop_move_bool) {
+		engine.setValue(group,"loop_move",(newValue*Jockey3ME.loop_move_value));
+	} else if (status == 0xB0 && Jockey3ME.loop_move_bool) {
+		if (newValue > 0) {
+			if (Jockey3ME.loop_move_value < 64) {
+				Jockey3ME.loop_move_value *= 2;
+			}
+		} else {
+			if (Jockey3ME.loop_move_value > 0.03125) {
+				Jockey3ME.loop_move_value /= 2;
+			}
+		}
+	} else {
+		if (value == 0x7F) {
+			Jockey3ME.loop_move_bool = true;
+		} else {
+			Jockey3ME.loop_move_bool = false;
+		}
+	}
 }
 
 Jockey3ME.crossfader = function (channel, control, value, status, group) {

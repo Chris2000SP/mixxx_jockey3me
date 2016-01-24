@@ -18,12 +18,11 @@ Jockey3ME.fxSelectKnopPushLedTemp = 0;
 Jockey3ME.fxSelectKnopParamChose = 0;
 Jockey3ME.fxSelectKnopParamLinkChose = 0;
 Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
+Jockey3ME.SuperKnobEnabled = [false,false,false,false];
 Jockey3ME.loop_move_value = 4; // Sets how many a Loop Jumping Beats when "MOVE" is Turned
 Jockey3ME.loop_move_bool = false;
-Jockey3ME.CUP_value = 0;
 Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
-Jockey3ME.noVolHopValue = [false,false,false,false,false];
 
 // Functions
 // Funny Led show on FX Dry/Wet
@@ -484,13 +483,26 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 	}
 }
 
-Jockey3ME.effectSuperKnop = function (channel, control, value, status, group) {
+Jockey3ME.effectSuperKnob = function (channel, control, value, status, group) {
 	var newValue = (value-64);
 	var currentDeck = parseInt(group.substring(23,24));
-	var interval = 0.00075;
+	var interval = 0.00065;
 	var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1");
 	newValue = curVal + (interval * newValue);
-	engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1",newValue);
+	if (Jockey3ME.SuperKnobEnabled[currentDeck-1]) {
+		engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1",newValue);
+	}
+}
+
+Jockey3ME.effectSuperKnobEnable = function (channel, control, value, status, group) {
+	var currentDeck = parseInt(group.substring(8,9));
+	if (!Jockey3ME.SuperKnobEnabled[currentDeck-1] && value == 0x7F) {
+		Jockey3ME.SuperKnobEnabled[currentDeck-1] = true;
+		midi.sendShortMsg(status,control,0x7F);
+	} else if (value == 0x7F) {
+		Jockey3ME.SuperKnobEnabled[currentDeck-1] = false;
+		midi.sendShortMsg(status,control,0x00);
+	}
 }
 
 // Browser Knop to Browse the Playlist
@@ -514,8 +526,10 @@ Jockey3ME.loop_double_halve = function (channel, control, value, status, group) 
 
   if (newValue == 1) {
     engine.setValue(group,"loop_double",1);
+	engine.setValue(group,"loop_double",0); // if not buttons lit all the way
   } else {
     engine.setValue(group,"loop_halve",1);
+	engine.setValue(group,"loop_halve",0);
   }
 }
 

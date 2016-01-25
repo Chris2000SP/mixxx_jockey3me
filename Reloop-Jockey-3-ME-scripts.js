@@ -27,10 +27,10 @@ Jockey3ME.MixerDeck2 = 0;
 script.crossfaderCurve = function (value, min, max) {
 	if (engine.getValue("[Mixer Profile]", "xFaderMode")==1) {
 		// Constant Power
-		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0.5, 0.962, min, max));
+		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0.998614, 0.999307, min, max));
 	} else {
 		// Additive
-		engine.setValue("[Mixer Profile]", "xFaderCurve", script.absoluteLin(value, 1, 2, min, max));
+		engine.setValue("[Mixer Profile]", "xFaderCurve", script.absoluteLin(value, 1, 1000, min, max));
 	}
 }
 
@@ -120,7 +120,7 @@ Jockey3ME.wheelTouch = function (channel, control, value, status, group) {
     if (value == 0x7F) {  // Some wheels send 0x90 on press and release, so you need to check the value
         var alpha = 1.0/8;
         var beta = alpha/32;
-        engine.scratchEnable(currentDeck, 2048, 45+1/3, alpha, beta);
+        engine.scratchEnable(currentDeck, 2048, 33+1/3, alpha, beta);
     }
     else {    // If button up
         engine.scratchDisable(currentDeck);

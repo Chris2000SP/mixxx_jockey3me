@@ -24,6 +24,16 @@ Jockey3ME.loop_move_bool = false;
 Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
 
+script.crossfaderCurve = function (value, min, max) {
+	if (engine.getValue("[Mixer Profile]", "xFaderMode")==1) {
+		// Constant Power
+		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0.5, 0.962, min, max));
+	} else {
+		// Additive
+		engine.setValue("[Mixer Profile]", "xFaderCurve", script.absoluteLin(value, 1, 2, min, max));
+	}
+}
+
 // Functions
 // Funny Led show on FX Dry/Wet
 Jockey3ME.EffectLedMeterShow = function () {
@@ -85,14 +95,14 @@ Jockey3ME.init = function () {
 			engine.connectControl("[EffectRack1_EffectUnit" + i + "_Effect1]","parameter" + j,"Jockey3ME.FX_Param_Led");
 		}
 		engine.connectControl("[EffectRack1_EffectUnit" + i + "]","mix","Jockey3ME.FX_DryWet_Led");
-	}
+	}/* while softTakeover isn't fixed.
 	for (var k = 1; k <= 4; k++) {
 		for (var l = 1; l <= 3; l++) {
 			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
 		}
 		engine.softTakeover("[Channel" + k + "]","volume",true);
 		engine.softTakeover("[Channel" + k + "]","pregain",true);
-	}
+	}*/
 }
 
 Jockey3ME.shutdown = function () {
@@ -557,41 +567,13 @@ Jockey3ME.loop_move = function (channel, control, value, status, group) {
 }
 
 Jockey3ME.crossfader = function (channel, control, value, status, group) {
-  var newValue = 0;
-  if (control == 0x37 && !Jockey3ME.crossfaderScratch) {
-    newValue = ((value / 63.5) - 1);
-    engine.setValue(group,"crossfader",newValue);
-  } else if (control == 0x37 && Jockey3ME.crossfaderScratch) {
-    switch (value) {
-      case 127:
-        engine.setValue(group,"crossfader",1);
-        break;
-      case 126:
-        engine.setValue(group,"crossfader",0.96875);
-        break;
-      case 125:
-        engine.setValue(group,"crossfader",0.953125);
-        break;
-      case 2:
-        engine.setValue(group,"crossfader",-0.953125);
-        break;
-      case 1:
-        engine.setValue(group,"crossfader",-0.96875);
-        break;
-      case 0:
-        engine.setValue(group,"crossfader",-1);
-        break;
-      default:
-        engine.setValue(group,"crossfader",0);
-    }
-  } else {
-    if (value <= 126) {
-      script.crossfaderCurve(value, 0, 126);
-      Jockey3ME.crossfaderScratch = false;
-    } else {
-      Jockey3ME.crossfaderScratch = true;
-    }
-  }
+	var newValue = 0;
+	if (control == 0x37) {
+		newValue = ((value / 63.5) - 1);
+		engine.setValue(group,"crossfader",newValue);
+	} else {
+		script.crossfaderCurve(value, 0, 127);
+	}
 }
 
 Jockey3ME.MixerVol = function (channel, control, value, status, group) {
@@ -609,12 +591,37 @@ Jockey3ME.MixerVol = function (channel, control, value, status, group) {
 Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
   if (control == 0x3C && value == 0x7F) {
     Jockey3ME.MixerDeck1 = 1;
+		// while softTakeover isn't fixed
+		var k = 3;
+		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
+		}
+		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",true);
   } else if (control == 0x3C && value == 0x00) {
     Jockey3ME.MixerDeck1 = 0;
+		var k = 1;
+		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
+		}
+		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",true);
   } else if (control == 0x3F && value == 0x7F) {
     Jockey3ME.MixerDeck2 = 1;
+		var k = 4;
+		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
+		}
+		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",true);
   } else if (control == 0x3F && value == 0x00) {
     Jockey3ME.MixerDeck2 = 0;
+		var k = 2;
+		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
+		}
+		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",true);
   }
 }
 

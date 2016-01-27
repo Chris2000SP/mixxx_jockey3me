@@ -18,7 +18,6 @@ Jockey3ME.fxSelectKnopPushLedTemp = 0;
 Jockey3ME.fxSelectKnopParamChose = 0;
 Jockey3ME.fxSelectKnopParamLinkChose = 0;
 Jockey3ME.fxSelectKnopParamLinkInverseChose = 0;
-Jockey3ME.SuperKnobEnabled = [false,false,false,false];
 Jockey3ME.loop_move_value = 4; // Sets how many a Loop Jumping Beats when "MOVE" is Turned
 Jockey3ME.loop_move_bool = false;
 Jockey3ME.MixerDeck1 = 0;
@@ -273,11 +272,6 @@ Jockey3ME.effectSelectParamLinkChose = function (currentDeck,value,control,statu
 	}
 }
 
-// <<<<<<< HEAD
-  // Set Leds
-	// --- to function Jockey3ME.effectSelect() Lines 253-260 +++
-  // Jockey3ME.effectSelectLedSetNumEffect(currentDeck,status,92,(value-64));
-// =======
 Jockey3ME.effectSelectParamLinkChoseOne = function (currentDeck,value,control,status,fxSelectKnop) {
 	if ((value-64) == 1) {
 		if (!(Jockey3ME.fxSelectKnopPushLedTemp > engine.getValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + fxSelectKnop + "]","num_parameters"))) {
@@ -304,7 +298,6 @@ Jockey3ME.effectSelectParamLinkChoseTwo = function (currentDeck,value,control,st
 	}
 	midi.sendShortMsg((status-32),control,parseInt(Jockey3ME.fxSelectKnopPushLedTemp*10.5834));
 	Jockey3ME.fxSelectKnopParamLinkChose = Jockey3ME.fxSelectKnopPushLedTemp;
-// >>>>>>> big_effects
 }
 
 Jockey3ME.effectSelectParamLinkChoseThree = function (currentDeck,value,control,status,fxSelectKnop) {
@@ -487,20 +480,7 @@ Jockey3ME.effectSuperKnob = function (channel, control, value, status, group) {
 	var interval = 0.00065;
 	var curVal = engine.getParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1");
 	newValue = curVal + (interval * newValue);
-	if (Jockey3ME.SuperKnobEnabled[currentDeck-1]) {
-		engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1",newValue);
-	}
-}
-
-Jockey3ME.effectSuperKnobEnable = function (channel, control, value, status, group) {
-	var currentDeck = parseInt(group.substring(8,9));
-	if (!Jockey3ME.SuperKnobEnabled[currentDeck-1] && value == 0x7F) {
-		Jockey3ME.SuperKnobEnabled[currentDeck-1] = true;
-		midi.sendShortMsg(status,control,0x7F);
-	} else if (value == 0x7F) {
-		Jockey3ME.SuperKnobEnabled[currentDeck-1] = false;
-		midi.sendShortMsg(status,control,0x00);
-	}
+	engine.setParameter("[EffectRack1_EffectUnit" + currentDeck + "]","super1",newValue);
 }
 
 // Browser Knop to Browse the Playlist

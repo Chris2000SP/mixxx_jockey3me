@@ -199,7 +199,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit1]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x90</status>
 				<midino>0x5D</midino>
 				<options>
@@ -209,7 +209,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit1]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x90</status>
 				<midino>0x5E</midino>
 				<options>
@@ -219,7 +219,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit1]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x90</status>
 				<midino>0x5F</midino>
 				<options>
@@ -229,9 +229,9 @@
 			<control>
 				<group>[EffectRack1_EffectUnit1]</group>
 				<key>Jockey3ME.effectSuperKnob</key>
-				<description>FX SuperKnob on Jogwheel Mode Default if FX MODE</description>
+				<description>FX SuperKnob on Jogwheel Mode Pitchbend</description>
 				<status>0xB0</status>
-				<midino>0x28</midino>
+				<midino>0x25</midino>
 				<options>
 					<script-binding/>
 				</options>
@@ -369,7 +369,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit2]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x91</status>
 				<midino>0x5D</midino>
 				<options>
@@ -379,7 +379,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit2]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x91</status>
 				<midino>0x5E</midino>
 				<options>
@@ -389,7 +389,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit2]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x91</status>
 				<midino>0x5F</midino>
 				<options>
@@ -399,9 +399,9 @@
 			<control>
 				<group>[EffectRack1_EffectUnit2]</group>
 				<key>Jockey3ME.effectSuperKnob</key>
-				<description>FX SuperKnob on Jogwheel Mode Default if FX MODE</description>
+				<description>FX SuperKnob on Jogwheel Mode Pitchbend</description>
 				<status>0xB1</status>
-				<midino>0x28</midino>
+				<midino>0x25</midino>
 				<options>
 					<script-binding/>
 				</options>
@@ -539,7 +539,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit3]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x92</status>
 				<midino>0x5D</midino>
 				<options>
@@ -549,7 +549,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit3]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x92</status>
 				<midino>0x5E</midino>
 				<options>
@@ -559,7 +559,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit3]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x92</status>
 				<midino>0x5F</midino>
 				<options>
@@ -569,9 +569,9 @@
 			<control>
 				<group>[EffectRack1_EffectUnit3]</group>
 				<key>Jockey3ME.effectSuperKnob</key>
-				<description>FX SuperKnob on Jogwheel Mode Default if FX MODE</description>
+				<description>FX SuperKnob on Jogwheel Mode Pitchbend</description>
 				<status>0xB2</status>
-				<midino>0x28</midino>
+				<midino>0x25</midino>
 				<options>
 					<script-binding/>
 				</options>
@@ -709,7 +709,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit4]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x93</status>
 				<midino>0x5D</midino>
 				<options>
@@ -719,7 +719,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit4]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x93</status>
 				<midino>0x5E</midino>
 				<options>
@@ -729,7 +729,7 @@
 			<control>
 				<group>[EffectRack1_EffectUnit4]</group>
 				<key>Jockey3ME.effectSelectPush</key>
-				<description>FX Linking to SuperKnob on Jogmode Default</description>
+				<description>FX Sel.X Push Linking to SuperKnob on Jogmode Pitchbend</description>
 				<status>0x93</status>
 				<midino>0x5F</midino>
 				<options>
@@ -739,9 +739,9 @@
 			<control>
 				<group>[EffectRack1_EffectUnit4]</group>
 				<key>Jockey3ME.effectSuperKnob</key>
-				<description>FX SuperKnob on Jogwheel Mode Default if FX MODE</description>
+				<description>FX SuperKnob on Jogwheel Mode Pitchbend</description>
 				<status>0xB3</status>
-				<midino>0x28</midino>
+				<midino>0x25</midino>
 				<options>
 					<script-binding/>
 				</options>
@@ -892,15 +892,6 @@
                     <normal/>
                 </options>
             </control>
-			<control>
-				<group>[Channel1]</group>
-				<key>Jockey3ME.effectSuperKnobEnable</key>
-				<status>0x90</status>
-				<midino>0x58</midino>
-				<options>
-					<script-binding/>
-				</options>
-			</control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel1]</group>
@@ -1277,15 +1268,6 @@
                     <normal/>
                 </options>
             </control>
-			<control>
-				<group>[Channel2]</group>
-				<key>Jockey3ME.effectSuperKnobEnable</key>
-				<status>0x91</status>
-				<midino>0x58</midino>
-				<options>
-					<script-binding/>
-				</options>
-			</control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel2]</group>
@@ -1660,15 +1642,6 @@
                     <normal/>
                 </options>
             </control>
-			<control>
-				<group>[Channel3]</group>
-				<key>Jockey3ME.effectSuperKnobEnable</key>
-				<status>0x92</status>
-				<midino>0x58</midino>
-				<options>
-					<script-binding/>
-				</options>
-			</control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel3]</group>
@@ -1986,15 +1959,6 @@
                     <normal/>
                 </options>
             </control>
-			<control>
-				<group>[Channel4]</group>
-				<key>Jockey3ME.effectSuperKnobEnable</key>
-				<status>0x93</status>
-				<midino>0x58</midino>
-				<options>
-					<script-binding/>
-				</options>
-			</control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel4]</group>

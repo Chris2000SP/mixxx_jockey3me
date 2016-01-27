@@ -268,7 +268,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
-                <key>Jockey3ME.effectParam</key>
+                <key>Jockey3ME.effectDryWet</key>
                 <description>FX Param Mix</description>
                 <status>0xB0</status>
                 <midino>0x1D</midino>
@@ -438,7 +438,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit2]</group>
-                <key>Jockey3ME.effectParam</key>
+                <key>Jockey3ME.effectDryWet</key>
                 <description>FX Param Mix</description>
                 <status>0xB1</status>
                 <midino>0x1D</midino>
@@ -608,7 +608,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit3]</group>
-                <key>Jockey3ME.effectParam</key>
+                <key>Jockey3ME.effectDryWet</key>
                 <description>FX Param Mix</description>
                 <status>0xB2</status>
                 <midino>0x1D</midino>
@@ -778,7 +778,7 @@
             </control>
             <control>
                 <group>[EffectRack1_EffectUnit4]</group>
-                <key>Jockey3ME.effectParam</key>
+                <key>Jockey3ME.effectDryWet</key>
                 <description>FX Param Mix</description>
                 <status>0xB3</status>
                 <midino>0x1D</midino>

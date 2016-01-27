@@ -1134,6 +1134,16 @@
                     <script-binding/>
                 </options>
             </control>
+			<control>
+				<group>[Channel1]</group>
+				<key>Jockey3ME.wheelTurn</key>
+				<description>Default Jog is Pitchbend</description>
+				<status>0xB0</status>
+				<midino>0x28</midino>
+				<options>
+					<script-binding/>
+				</options>
+			</control>
             <control>
                 <group>[Channel1]</group>
                 <key>Jockey3ME.wheelTouch</key>
@@ -1510,6 +1520,16 @@
                     <script-binding/>
                 </options>
             </control>
+			<control>
+				<group>[Channel2]</group>
+				<key>Jockey3ME.wheelTurn</key>
+				<description>Default Jog is Pitchbend</description>
+				<status>0xB1</status>
+				<midino>0x28</midino>
+				<options>
+					<script-binding/>
+				</options>
+			</control>
             <control>
                 <group>[Channel2]</group>
                 <key>Jockey3ME.wheelTouch</key>
@@ -1884,6 +1904,16 @@
                     <script-binding/>
                 </options>
             </control>
+			<control>
+				<group>[Channel3]</group>
+				<key>Jockey3ME.wheelTurn</key>
+				<description>Default Jog is Pitchbend</description>
+				<status>0xB2</status>
+				<midino>0x28</midino>
+				<options>
+					<script-binding/>
+				</options>
+			</control>
             <control>
                 <group>[Channel3]</group>
                 <key>Jockey3ME.wheelTouch</key>
@@ -2201,6 +2231,16 @@
                     <script-binding/>
                 </options>
             </control>
+			<control>
+				<group>[Channel4]</group>
+				<key>Jockey3ME.wheelTurn</key>
+				<description>Default Jog is Pitchbend</description>
+				<status>0xB3</status>
+				<midino>0x28</midino>
+				<options>
+					<script-binding/>
+				</options>
+			</control>
             <control>
                 <group>[Channel4]</group>
                 <key>Jockey3ME.wheelTouch</key>

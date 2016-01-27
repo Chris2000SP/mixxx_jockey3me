@@ -622,3 +622,11 @@ Jockey3ME.EQ = function (channel, control, value, status, group) {
   }
 	engine.setValue("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnop, script.absoluteNonLin(value,0,1,4,0,127));
 }
+
+Jockey3ME.trackSearch = function (channel, control, value, status, group) {
+	var newValue = (value-64);
+	if (newValue > 1 || newValue < -1) {
+		newValue /= 2;
+	}
+	engine.setValue(group,"beatjump",newValue);
+}

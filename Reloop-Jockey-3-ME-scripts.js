@@ -6,6 +6,8 @@ Jockey3ME.EffectLedMeterValue = 1;
 Jockey3ME.LedMeterShowValue = 1;
 Jockey3ME.LedMeterShowValueTwo = false;
 Jockey3ME.scratching = [];
+Jockey3ME.jogwheelResolution = 2048;
+Jockey3ME.jogwheelSpinSpeed = 33+1/3;
 Jockey3ME.hotcueClearVal = 0;
 Jockey3ME.crossfaderScratch = false;
 Jockey3ME.num_effectsValue = [0,0,0,0];
@@ -119,7 +121,7 @@ Jockey3ME.wheelTouch = function (channel, control, value, status, group) {
     if (value == 0x7F) {  // Some wheels send 0x90 on press and release, so you need to check the value
         var alpha = 1.0/8;
         var beta = alpha/32;
-        engine.scratchEnable(currentDeck, 2048, 33+1/3, alpha, beta);
+        engine.scratchEnable(currentDeck, Jockey3ME.jogwheelResolution, Jockey3ME.jogwheelSpinSpeed, alpha, beta);
     }
     else {    // If button up
         engine.scratchDisable(currentDeck);

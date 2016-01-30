@@ -26,12 +26,14 @@ Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
 
 script.crossfaderCurve = function (value, min, max) {
+	var newValue = script.absoluteLin(value, 2, 250, min, max);
+	var newValueThree = script.absoluteLin(value, 0.5, 0.999307, min, max);
 	if (engine.getValue("[Mixer Profile]", "xFaderMode")==1) {
 		// Constant Power
-		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0.998614, 0.999307, min, max));
+		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0.5, newValueThree, min, max));
 	} else {
 		// Additive
-		engine.setValue("[Mixer Profile]", "xFaderCurve", script.absoluteLin(value, 1, 1000, min, max));
+		engine.setValue("[Mixer Profile]", "xFaderCurve", script.absoluteLin(value, 1, newValue, min, max));
 	}
 }
 
@@ -564,33 +566,45 @@ Jockey3ME.DeckSwitch = function (channel, control, value, status, group) {
 		// while softTakeover isn't fixed
 		var k = 3;
 		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,false);
 			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
 		}
+		engine.softTakeover("[Channel" + k + "]","volume",false);
 		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",false);
 		engine.softTakeover("[Channel" + k + "]","pregain",true);
   } else if (control == 0x3C && value == 0x00) {
     Jockey3ME.MixerDeck1 = 0;
 		var k = 1;
 		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,false);
 			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
 		}
+		engine.softTakeover("[Channel" + k + "]","volume",false);
 		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",false);
 		engine.softTakeover("[Channel" + k + "]","pregain",true);
   } else if (control == 0x3F && value == 0x7F) {
     Jockey3ME.MixerDeck2 = 1;
 		var k = 4;
 		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,false);
 			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
 		}
+		engine.softTakeover("[Channel" + k + "]","volume",false);
 		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",false);
 		engine.softTakeover("[Channel" + k + "]","pregain",true);
   } else if (control == 0x3F && value == 0x00) {
     Jockey3ME.MixerDeck2 = 0;
 		var k = 2;
 		for (var l = 1; l <= 3; l++) {
+			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,false);
 			engine.softTakeover("[EqualizerRack1_[Channel" + k + "]_Effect1]","parameter" + l,true);
 		}
+		engine.softTakeover("[Channel" + k + "]","volume",false);
 		engine.softTakeover("[Channel" + k + "]","volume",true);
+		engine.softTakeover("[Channel" + k + "]","pregain",false);
 		engine.softTakeover("[Channel" + k + "]","pregain",true);
   }
 }

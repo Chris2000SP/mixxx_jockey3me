@@ -90,7 +90,7 @@
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x90</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<options>
 					<normal/>
 				</options>
@@ -100,7 +100,7 @@
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x91</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<options>
 					<normal/>
 				</options>
@@ -110,7 +110,7 @@
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x92</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<options>
 					<normal/>
 				</options>
@@ -120,7 +120,7 @@
 				<key>talkover</key>
 				<description>Microphone Talkover</description>
 				<status>0x93</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<options>
 					<normal/>
 				</options>
@@ -2344,28 +2344,28 @@
 				<group>[Microphone]</group>
 				<key>talkover</key>
 				<status>0x90</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<minimum>0.1</minimum>
 			</output>
 			<output>
 				<group>[Microphone]</group>
 				<key>talkover</key>
 				<status>0x91</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<minimum>0.1</minimum>
 			</output>
 			<output>
 				<group>[Microphone]</group>
 				<key>talkover</key>
 				<status>0x92</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<minimum>0.1</minimum>
 			</output>
 			<output>
 				<group>[Microphone]</group>
 				<key>talkover</key>
 				<status>0x93</status>
-				<midino>0x08</midino>
+				<midino>0x56</midino>
 				<minimum>0.1</minimum>
 			</output>
 			<output>

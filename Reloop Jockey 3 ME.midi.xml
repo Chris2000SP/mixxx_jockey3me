@@ -285,6 +285,33 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[EffectRack1_EffectUnit1_Effect1]</group>
+				<key>enabled</key>
+				<status>0x90</status>
+				<midino>0x02</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit1_Effect2]</group>
+				<key>enabled</key>
+				<status>0x90</status>
+				<midino>0x03</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit1_Effect3]</group>
+				<key>enabled</key>
+				<status>0x90</status>
+				<midino>0x04</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel1]_enable</key>
@@ -455,6 +482,33 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[EffectRack1_EffectUnit2_Effect1]</group>
+				<key>enabled</key>
+				<status>0x91</status>
+				<midino>0x02</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit2_Effect2]</group>
+				<key>enabled</key>
+				<status>0x91</status>
+				<midino>0x03</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit2_Effect3]</group>
+				<key>enabled</key>
+				<status>0x91</status>
+				<midino>0x04</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[EffectRack1_EffectUnit2]</group>
                 <key>group_[Channel1]_enable</key>
@@ -625,6 +679,33 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[EffectRack1_EffectUnit3_Effect1]</group>
+				<key>enabled</key>
+				<status>0x92</status>
+				<midino>0x02</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit3_Effect2]</group>
+				<key>enabled</key>
+				<status>0x92</status>
+				<midino>0x03</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit3_Effect3]</group>
+				<key>enabled</key>
+				<status>0x92</status>
+				<midino>0x04</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[EffectRack1_EffectUnit3]</group>
                 <key>group_[Channel1]_enable</key>
@@ -795,6 +876,33 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[EffectRack1_EffectUnit4_Effect1]</group>
+				<key>enabled</key>
+				<status>0x93</status>
+				<midino>0x02</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit4_Effect2]</group>
+				<key>enabled</key>
+				<status>0x93</status>
+				<midino>0x03</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
+			<control>
+				<group>[EffectRack1_EffectUnit4_Effect3]</group>
+				<key>enabled</key>
+				<status>0x93</status>
+				<midino>0x04</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[EffectRack1_EffectUnit4]</group>
                 <key>group_[Channel1]_enable</key>
@@ -1064,9 +1172,9 @@
             <control>
                 <group>[Channel1]</group>
                 <key>beats_translate_curpos</key>
-                <description>Beat DOWN Moves Beatgrid line to PlayPos</description>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
                 <status>0x90</status>
-                <midino>0x07</midino>
+                <midino>0x68</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1469,9 +1577,9 @@
             <control>
                 <group>[Channel2]</group>
                 <key>beats_translate_curpos</key>
-                <description>Beat DOWN Moves Beatgrid line to PlayPos</description>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
                 <status>0x91</status>
-                <midino>0x07</midino>
+                <midino>0x68</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1872,9 +1980,9 @@
             <control>
                 <group>[Channel3]</group>
                 <key>beats_translate_curpos</key>
-                <description>Beat DOWN Moves Beatgrid line to PlayPos</description>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
                 <status>0x92</status>
-                <midino>0x07</midino>
+                <midino>0x68</midino>
                 <options>
                     <normal/>
                 </options>
@@ -2218,9 +2326,9 @@
             <control>
                 <group>[Channel4]</group>
                 <key>beats_translate_curpos</key>
-                <description>Beat DOWN Moves Beatgrid line to PlayPos</description>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
                 <status>0x93</status>
-                <midino>0x07</midino>
+                <midino>0x68</midino>
                 <options>
                     <normal/>
                 </options>
@@ -2811,6 +2919,27 @@
                 <midino>0x01</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[EffectRack1_EffectUnit1_Effect1]</group>
+				<key>enabled</key>
+				<status>0x90</status>
+				<midino>0x02</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit1_Effect2]</group>
+				<key>enabled</key>
+				<status>0x90</status>
+				<midino>0x03</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit1_Effect3]</group>
+				<key>enabled</key>
+				<status>0x90</status>
+				<midino>0x04</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[EffectRack1_EffectUnit2]</group>
                 <key>enabled</key>
@@ -2818,6 +2947,27 @@
                 <midino>0x01</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[EffectRack1_EffectUnit2_Effect1]</group>
+				<key>enabled</key>
+				<status>0x91</status>
+				<midino>0x02</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit2_Effect2]</group>
+				<key>enabled</key>
+				<status>0x91</status>
+				<midino>0x03</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit2_Effect3]</group>
+				<key>enabled</key>
+				<status>0x91</status>
+				<midino>0x04</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[EffectRack1_EffectUnit3]</group>
                 <key>enabled</key>
@@ -2825,6 +2975,27 @@
                 <midino>0x01</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[EffectRack1_EffectUnit3_Effect1]</group>
+				<key>enabled</key>
+				<status>0x92</status>
+				<midino>0x02</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit3_Effect2]</group>
+				<key>enabled</key>
+				<status>0x92</status>
+				<midino>0x03</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit3_Effect3]</group>
+				<key>enabled</key>
+				<status>0x92</status>
+				<midino>0x04</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[EffectRack1_EffectUnit4]</group>
                 <key>enabled</key>
@@ -2832,6 +3003,27 @@
                 <midino>0x01</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[EffectRack1_EffectUnit4_Effect1]</group>
+				<key>enabled</key>
+				<status>0x93</status>
+				<midino>0x02</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit4_Effect2]</group>
+				<key>enabled</key>
+				<status>0x93</status>
+				<midino>0x03</midino>
+				<minimum>0.1</minimum>
+			</output>
+			<output>
+				<group>[EffectRack1_EffectUnit4_Effect3]</group>
+				<key>enabled</key>
+				<status>0x93</status>
+				<midino>0x04</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[EffectRack1_EffectUnit1]</group>
                 <key>group_[Channel1]_enable</key>

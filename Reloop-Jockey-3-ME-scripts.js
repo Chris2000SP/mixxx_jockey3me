@@ -91,7 +91,7 @@ Jockey3ME.init = function () {
     midi.sendShortMsg(0x92,j,0x00);
     midi.sendShortMsg(0x93,j,0x00);
   };
-  Jockey3ME.LedShowBeginTimer = engine.beginTimer(500,"Jockey3ME.LedShowBegin()",1); // LedShow Script Starts Here after 500ms
+  Jockey3ME.LedShowBeginTimer = engine.beginTimer(2000,"Jockey3ME.LedShowBegin()",1); // LedShow Script Starts Here after 500ms
 	for (var i = 1; i <= 4; i++) {
 		for (var j = 1; j <= 3; j++) {
 			engine.connectControl("[EffectRack1_EffectUnit" + i + "_Effect1]","parameter" + j,"Jockey3ME.FX_Param_Led");

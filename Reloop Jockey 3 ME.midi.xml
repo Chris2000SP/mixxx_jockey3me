@@ -14,7 +14,7 @@
             <!-- Master Section -->
             <control>
                 <group>[Master]</group>
-                <key>Jockey3ME.crossfader</key>
+                <key>Jockey3ME.crossfaderCurve</key>
                 <status>0xB0</status>
                 <midino>0x38</midino>
                 <options>

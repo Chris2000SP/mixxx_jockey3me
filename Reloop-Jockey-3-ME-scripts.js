@@ -9,7 +9,6 @@ Jockey3ME.scratching = [];
 Jockey3ME.jogwheelResolution = 2048;
 Jockey3ME.jogwheelSpinSpeed = 33+1/3;
 Jockey3ME.hotcueClearVal = 0;
-Jockey3ME.crossfaderScratch = false;
 Jockey3ME.num_effectsValue = [0,0,0,0];
 Jockey3ME.effectsAvailable = 5; // Sets how many Effects are Loadable
 Jockey3ME.fxSelectKnopPush = [0,0,0,0];
@@ -515,6 +514,7 @@ Jockey3ME.loop_double_halve = function (channel, control, value, status, group) 
   }
 }
 
+// Must remap if controls are Documented
 Jockey3ME.loop_move = function (channel, control, value, status, group) {
   var newValue = (value-64);
 	if (status == 0xB0 && !Jockey3ME.loop_move_bool) {
@@ -539,13 +539,12 @@ Jockey3ME.loop_move = function (channel, control, value, status, group) {
 }
 
 Jockey3ME.crossfader = function (channel, control, value, status, group) {
-	var newValue = 0;
-	if (control == 0x37) {
-		newValue = ((value / 63.5) - 1);
-		engine.setValue(group,"crossfader",newValue);
-	} else {
-		script.crossfaderCurve(value, 0, 127);
-	}
+	var newValue = ((value / 63.5) - 1);
+	engine.setValue(group,"crossfader",newValue);
+}
+
+Jockey3ME.crossfaderCurve = function (channel, control, value, status, group) {
+	script.crossfaderCurve(value, 0 , 127);
 }
 
 Jockey3ME.MixerVol = function (channel, control, value, status, group) {

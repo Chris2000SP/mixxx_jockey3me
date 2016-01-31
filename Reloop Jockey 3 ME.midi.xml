@@ -1056,7 +1056,7 @@
                 <key>quantize</key>
                 <description>Reloop Sets Quantize</description>
                 <status>0x90</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1461,7 +1461,7 @@
                 <key>quantize</key>
                 <description>Reloop Sets Quantize</description>
                 <status>0x91</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <options>
                     <normal/>
                 </options>
@@ -1864,7 +1864,7 @@
                 <key>quantize</key>
                 <description>Reloop Sets Quantize</description>
                 <status>0x92</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <options>
                     <normal/>
                 </options>
@@ -2210,7 +2210,7 @@
                 <key>quantize</key>
                 <description>Reloop Sets Quantize</description>
                 <status>0x93</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <options>
                     <normal/>
                 </options>
@@ -3108,7 +3108,7 @@
                 <group>[Channel1]</group>
                 <key>quantize</key>
                 <status>0x90</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <minimum>0.1</minimum>
             </output>
             <!-- Mixer Section -->
@@ -3242,7 +3242,7 @@
                 <group>[Channel2]</group>
                 <key>quantize</key>
                 <status>0x91</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <minimum>0.1</minimum>
             </output>
             <!-- Mixer Section -->
@@ -3376,7 +3376,7 @@
                 <group>[Channel3]</group>
                 <key>quantize</key>
                 <status>0x92</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <minimum>0.1</minimum>
             </output>
             <!-- Mixer Section -->
@@ -3510,7 +3510,7 @@
                 <group>[Channel4]</group>
                 <key>quantize</key>
                 <status>0x93</status>
-                <midino>0x06</midino>
+                <midino>0x58</midino>
                 <minimum>0.1</minimum>
             </output>
             <!-- Mixer Section -->

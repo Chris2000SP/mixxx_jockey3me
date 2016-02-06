@@ -88,7 +88,7 @@
 			<control>
 				<group>[Microphone]</group>
 				<key>talkover</key>
-				<description>Microphone Talkover</description>
+				<description>Shift Sync</description>
 				<status>0x90</status>
 				<midino>0x56</midino>
 				<options>
@@ -98,7 +98,7 @@
 			<control>
 				<group>[Microphone]</group>
 				<key>talkover</key>
-				<description>Microphone Talkover</description>
+				<description>Shift Sync</description>
 				<status>0x91</status>
 				<midino>0x56</midino>
 				<options>
@@ -108,7 +108,7 @@
 			<control>
 				<group>[Microphone]</group>
 				<key>talkover</key>
-				<description>Microphone Talkover</description>
+				<description>Shift Sync</description>
 				<status>0x92</status>
 				<midino>0x56</midino>
 				<options>
@@ -118,7 +118,7 @@
 			<control>
 				<group>[Microphone]</group>
 				<key>talkover</key>
-				<description>Microphone Talkover</description>
+				<description>Shift Sync</description>
 				<status>0x93</status>
 				<midino>0x56</midino>
 				<options>
@@ -1000,6 +1000,26 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>quantize</key>
+                <description>Shift CUE Sets Quantize</description>
+                <status>0x90</status>
+                <midino>0x58</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beats_translate_curpos</key>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
+                <status>0x90</status>
+                <midino>0x68</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel1]</group>
@@ -1119,6 +1139,15 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[Channel1]</group>
+				<key>repeat</key>
+				<status>0x90</status>
+				<midino>0x06</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[Channel1]</group>
                 <key>beatloop_4_activate</key>
@@ -1157,26 +1186,6 @@
                 <midino>0x2C</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>quantize</key>
-                <description>Reloop Sets Quantize</description>
-                <status>0x90</status>
-                <midino>0x58</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel1]</group>
-                <key>beats_translate_curpos</key>
-                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
-                <status>0x90</status>
-                <midino>0x68</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -1405,6 +1414,26 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>quantize</key>
+                <description>Shift CUE Sets Quantize</description>
+                <status>0x91</status>
+                <midino>0x58</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beats_translate_curpos</key>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
+                <status>0x91</status>
+                <midino>0x68</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel2]</group>
@@ -1524,6 +1553,15 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[Channel2]</group>
+				<key>repeat</key>
+				<status>0x91</status>
+				<midino>0x06</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[Channel2]</group>
                 <key>beatloop_4_activate</key>
@@ -1562,26 +1600,6 @@
                 <midino>0x2C</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>quantize</key>
-                <description>Reloop Sets Quantize</description>
-                <status>0x91</status>
-                <midino>0x58</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel2]</group>
-                <key>beats_translate_curpos</key>
-                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
-                <status>0x91</status>
-                <midino>0x68</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -1808,6 +1826,26 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>quantize</key>
+                <description>Shift CUE Sets Quantize</description>
+                <status>0x92</status>
+                <midino>0x58</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel3]</group>
+                <key>beats_translate_curpos</key>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
+                <status>0x92</status>
+                <midino>0x68</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel3]</group>
@@ -1927,6 +1965,15 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[Channel3]</group>
+				<key>repeat</key>
+				<status>0x92</status>
+				<midino>0x06</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[Channel3]</group>
                 <key>beatloop_4_activate</key>
@@ -1965,26 +2012,6 @@
                 <midino>0x2C</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>quantize</key>
-                <description>Reloop Sets Quantize</description>
-                <status>0x92</status>
-                <midino>0x58</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel3]</group>
-                <key>beats_translate_curpos</key>
-                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
-                <status>0x92</status>
-                <midino>0x68</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -2154,6 +2181,26 @@
                     <normal/>
                 </options>
             </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>quantize</key>
+                <description>Shift CUE Sets Quantize</description>
+                <status>0x93</status>
+                <midino>0x58</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel4]</group>
+                <key>beats_translate_curpos</key>
+                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
+                <status>0x93</status>
+                <midino>0x68</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
             <!-- Hotcue Section -->
             <control>
                 <group>[Channel4]</group>
@@ -2273,6 +2320,15 @@
                     <normal/>
                 </options>
             </control>
+			<control>
+				<group>[Channel4]</group>
+				<key>repeat</key>
+				<status>0x93</status>
+				<midino>0x06</midino>
+				<options>
+					<normal/>
+				</options>
+			</control>
             <control>
                 <group>[Channel4]</group>
                 <key>beatloop_4_activate</key>
@@ -2311,26 +2367,6 @@
                 <midino>0x2C</midino>
                 <options>
                     <script-binding/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>quantize</key>
-                <description>Reloop Sets Quantize</description>
-                <status>0x93</status>
-                <midino>0x58</midino>
-                <options>
-                    <normal/>
-                </options>
-            </control>
-            <control>
-                <group>[Channel4]</group>
-                <key>beats_translate_curpos</key>
-                <description>Shift Minus Moves Beatgrid line to PlayPos</description>
-                <status>0x93</status>
-                <midino>0x68</midino>
-                <options>
-                    <normal/>
                 </options>
             </control>
             <control>
@@ -3296,6 +3332,13 @@
                 <midino>0x05</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[Channel1]</group>
+				<key>repeat</key>
+				<status>0x90</status>
+				<midino>0x06</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[Channel1]</group>
                 <key>quantize</key>
@@ -3430,6 +3473,13 @@
                 <midino>0x05</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[Channel2]</group>
+				<key>repeat</key>
+				<status>0x91</status>
+				<midino>0x06</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[Channel2]</group>
                 <key>quantize</key>
@@ -3564,6 +3614,13 @@
                 <midino>0x05</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[Channel3]</group>
+				<key>repeat</key>
+				<status>0x92</status>
+				<midino>0x06</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[Channel3]</group>
                 <key>quantize</key>
@@ -3698,6 +3755,13 @@
                 <midino>0x05</midino>
                 <minimum>0.1</minimum>
             </output>
+			<output>
+				<group>[Channel4]</group>
+				<key>repeat</key>
+				<status>0x93</status>
+				<midino>0x06</midino>
+				<minimum>0.1</minimum>
+			</output>
             <output>
                 <group>[Channel4]</group>
                 <key>quantize</key>

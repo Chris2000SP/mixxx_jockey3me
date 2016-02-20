@@ -253,13 +253,10 @@ Jockey3ME.effectSelect = function (channel, control, value, status, group) {
 		engine.setValue("[EffectRack1_EffectUnit" + currentDeck + "_Effect" + fxSelectKnob + "]","effect_selector",(value-64));
 	} else if (fxSelectKnob == 1 && Jockey3ME.fxSelectKnobPushIterator[currentDeck - 1]) {
 		Jockey3ME.effectSelectParamLinkChose(currentDeck,value,control,status,fxSelectKnob);
-		print("FX Sel.1 Turned");
 	} else if (fxSelectKnob == 2 && Jockey3ME.fxSelectKnobPushIterator[(currentDeck - 1) + 4]) {
 		Jockey3ME.effectSelectParamLinkChose(currentDeck,value,control,status,fxSelectKnob);
-		print("FX Sel.2 Turned");
 	} else if (fxSelectKnob == 3 && Jockey3ME.fxSelectKnobPushIterator[(currentDeck - 1) + 8]) {
 		Jockey3ME.effectSelectParamLinkChose(currentDeck,value,control,status,fxSelectKnob);
-		print("FX Sel.3 Turned");
 	}
 }
 
@@ -376,6 +373,7 @@ Jockey3ME.effectSelectPush = function (channel, control, value, status, group) {
 	}
 }
 
+// This is control by Jogwheel Pitch bend
 Jockey3ME.effectSuperKnob = function (channel, control, value, status, group) {
 	var newValue = (value-64);
 	var currentDeck = parseInt(group.substring(23,24));
@@ -419,14 +417,10 @@ Jockey3ME.loop_move = function (channel, control, value, status, group) {
 	if (status == 0xB0 && !Jockey3ME.loop_move_bool) {
 		engine.setValue(group,"loop_move",(newValue*Jockey3ME.loop_move_value));
 	} else if (status == 0xB0 && Jockey3ME.loop_move_bool) {
-		if (newValue > 0) {
-			if (Jockey3ME.loop_move_value < 64) {
-				Jockey3ME.loop_move_value *= 2;
-			}
-		} else {
-			if (Jockey3ME.loop_move_value > 0.03125) {
-				Jockey3ME.loop_move_value /= 2;
-			}
+		if (newValue > 0 && Jockey3ME.loop_move_value < 64) {
+			Jockey3ME.loop_move_value *= 2;
+		} else if (Jockey3ME.loop_move_value > 0.03125) {
+			Jockey3ME.loop_move_value /= 2;
 		}
 	} else {
 		if (value == 0x7F) {

@@ -23,11 +23,11 @@ Jockey3ME.MixerDeck1 = 0;
 Jockey3ME.MixerDeck2 = 0;
 
 script.crossfaderCurve = function (value, min, max) {
-	var newValue = script.absoluteLin(value, 2, 250, min, max);
+	var newValue = script.absoluteLin(value, 2, 150, min, max);
 	var newValueThree = script.absoluteLin(value, 0.5, 0.999307, min, max);
 	if (engine.getValue("[Mixer Profile]", "xFaderMode")==1) {
 		// Constant Power
-		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0.5, newValueThree, min, max));
+		engine.setValue("[Mixer Profile]", "xFaderCalibration", script.absoluteLin(value, 0, newValueThree, min, max));
 	} else {
 		// Additive
 		engine.setValue("[Mixer Profile]", "xFaderCurve", script.absoluteLin(value, 1, newValue, min, max));

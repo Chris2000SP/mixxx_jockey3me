@@ -531,6 +531,7 @@ Jockey3ME.EQ = function (channel, control, value, status, group) {
 	engine.setValue("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnob, script.absoluteLin(value,0,script.absoluteLin(value,0,4,0,127),0,127));
 }
 
+// Jogwheel Search Mode
 Jockey3ME.trackSearch = function (channel, control, value, status, group) {
 	var newValue = (value-64);
 	if (newValue > 1 || newValue < -1) {

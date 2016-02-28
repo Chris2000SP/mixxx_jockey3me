@@ -446,9 +446,9 @@ Jockey3ME.MixerVol = function (channel, control, value, status, group) {
     currentDeck += 2;
   }
   if (control == 0x2D || control == 0x6C) {
-	  engine.setValue("[Channel" + currentDeck + "]","pregain",script.absoluteNonLin(value,0,1,4,0,127));
+	  engine.setValue("[Channel" + currentDeck + "]","pregain",script.absoluteLin(value,0,script.absoluteLin(value,0,4,0,127),0,127));
   } else {
-	  engine.setValue("[Channel" + currentDeck + "]","volume",script.absoluteNonLin(value,0,0.25,1,0,127));
+	  engine.setValue("[Channel" + currentDeck + "]","volume",script.absoluteLin(value,0,script.absoluteLin(value,0,1,0,127),0,127));
   }
 }
 
@@ -528,7 +528,7 @@ Jockey3ME.EQ = function (channel, control, value, status, group) {
     default:
       print("Error on EQ chosing");
   }
-	engine.setValue("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnob, script.absoluteNonLin(value,0,1,4,0,127));
+	engine.setValue("[EqualizerRack1_[Channel" + currentDeck + "]_Effect1]","parameter" + eqKnob, script.absoluteLin(value,0,script.absoluteLin(value,0,4,0,127),0,127));
 }
 
 Jockey3ME.trackSearch = function (channel, control, value, status, group) {
